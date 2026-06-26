@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aawaz Academy | Speak With Confidence</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0f1c3f;--blue:#1a3a7c;--gold:#f5a623;--red:#e63946;
+  --light:#f0f4ff;--white:#fff;--gray:#64748b;--dark:#1e293b
+}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',sans-serif;color:var(--dark);background:#fff}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;background:var(--navy);z-index:999;padding:14px 5%}
+nav .inner{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:auto}
+.logo{color:#fff;font-size:1.4rem;font-weight:800;letter-spacing:-0.5px}
+.logo span{color:var(--gold)}
+nav ul{list-style:none;display:flex;gap:28px}
+nav ul a{color:#c8d6f5;text-decoration:none;font-size:.9rem;transition:.2s}
+nav ul a:hover{color:var(--gold)}
+.nav-btn{background:var(--gold);color:var(--navy)!important;padding:8px 18px;border-radius:6px;font-weight:700!important}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy) 60%,var(--blue));min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px}
+.hero-inner{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.badge{display:inline-block;background:rgba(245,166,35,.15);border:1px solid var(--gold);color:var(--gold);padding:5px 14px;border-radius:20px;font-size:.8rem;font-weight:600;margin-bottom:16px}
+h1{color:#fff;font-size:3rem;line-height:1.15;font-weight:900;margin-bottom:18px}
+h1 em{color:var(--gold);font-style:normal}
+.hero p{color:#a8bcd8;font-size:1.1rem;line-height:1.7;margin-bottom:30px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:14px 28px;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;border:none;text-decoration:none;display:inline-block;transition:.2s}
+.btn-gold{background:var(--gold);color:var(--navy)}
+.btn-gold:hover{background:#e6951a}
+.btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4)}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+
+/* HERO CARD */
+.hero-card{background:rgba(255,255,255,.06);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:28px}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat{text-align:center;padding:16px;background:rgba(255,255,255,.06);border-radius:10px}
+.stat strong{display:block;font-size:2rem;color:var(--gold);font-weight:900}
+.stat span{font-size:.8rem;color:#a8bcd8}
+.hero-card h3{color:#fff;margin-bottom:16px;font-size:1rem;text-align:center;opacity:.7}
+
+/* TRUST BAR */
+.trust-bar{background:var(--gold);padding:14px 5%}
+.trust-bar .inner{max-width:1100px;margin:auto;display:flex;justify-content:space-around;flex-wrap:wrap;gap:10px}
+.trust-item{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--navy);font-size:.9rem}
+
+/* SECTIONS */
+section{padding:80px 5%}
+.container{max-width:1100px;margin:auto}
+.section-label{color:var(--red);font-size:.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+h2{font-size:2.2rem;font-weight:900;color:var(--navy);margin-bottom:12px;line-height:1.2}
+.sub{color:var(--gray);font-size:1.05rem;margin-bottom:40px;max-width:600px}
+
+/* COURSES */
+.courses{background:var(--light)}
+.course-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.course-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.07);transition:.3s}
+.course-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.12)}
+.course-top{padding:22px;background:var(--navy)}
+.course-top .icon{font-size:2rem;margin-bottom:10px}
+.course-top h3{color:#fff;font-size:1.15rem;font-weight:800}
+.course-top p{color:#a8bcd8;font-size:.85rem;margin-top:4px}
+.course-body{padding:20px}
+.course-body ul{list-style:none}
+.course-body ul li{padding:7px 0;border-bottom:1px solid #f0f0f0;font-size:.9rem;color:var(--gray);display:flex;gap:8px}
+.course-body ul li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0}
+.fee{margin-top:14px;padding:12px;background:var(--light);border-radius:8px;text-align:center}
+.fee strong{color:var(--navy);font-size:1.2rem}
+.fee span{font-size:.8rem;color:var(--gray);display:block}
+
+/* PDF SECTION */
+.pdf-section{background:var(--navy)}
+.pdf-section h2,.pdf-section .section-label{color:#fff}
+.pdf-section .sub{color:#a8bcd8}
+.pdf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pdf-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:22px;text-align:center;transition:.3s;cursor:pointer}
+.pdf-card:hover{background:rgba(245,166,35,.15);border-color:var(--gold)}
+.pdf-card .pdf-icon{font-size:2.5rem;margin-bottom:12px}
+.pdf-card h4{color:#fff;font-size:1rem;margin-bottom:6px}
+.pdf-card p{color:#a8bcd8;font-size:.82rem;margin-bottom:16px}
+.pdf-btn{background:var(--gold);color:var(--navy);border:none;padding:9px 20px;border-radius:6px;font-weight:700;cursor:pointer;font-size:.88rem;width:100%;transition:.2s}
+.pdf-btn:hover{background:#e6951a}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;align-items:center;justify-content:center}
+.modal-overlay.active{display:flex}
+.modal{background:#fff;border-radius:16px;padding:36px;width:90%;max-width:440px;position:relative}
+.modal h3{color:var(--navy);font-size:1.4rem;margin-bottom:6px}
+.modal p{color:var(--gray);font-size:.9rem;margin-bottom:22px}
+.modal input,.modal select{width:100%;padding:12px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:.95rem;margin-bottom:14px;outline:none;font-family:inherit;transition:.2s}
+.modal input:focus,.modal select:focus{border-color:var(--blue)}
+.modal .submit-btn{width:100%;background:var(--navy);color:#fff;border:none;padding:14px;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;transition:.2s}
+.modal .submit-btn:hover{background:var(--blue)}
+.close-btn{position:absolute;top:14px;right:18px;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--gray)}
+.success-msg{display:none;text-align:center;padding:10px}
+.success-msg .check{font-size:3rem;margin-bottom:10px}
+.success-msg h4{color:var(--navy);margin-bottom:6px}
+.success-msg p{color:var(--gray);font-size:.9rem}
+
+/* REGISTRATION */
+.register-section{background:linear-gradient(135deg,var(--blue),var(--navy))}
+.register-section h2{color:#fff}
+.register-section .section-label{color:var(--gold)}
+.register-section .sub{color:#a8bcd8}
+.reg-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start}
+.reg-form{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:32px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;color:#c8d6f5;font-size:.85rem;margin-bottom:6px;font-weight:600}
+.form-group input,.form-group select{width:100%;padding:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:8px;color:#fff;font-size:.95rem;outline:none;font-family:inherit;transition:.2s}
+.form-group input::placeholder{color:rgba(255,255,255,.4)}
+.form-group input:focus,.form-group select:focus{border-color:var(--gold);background:rgba(255,255,255,.12)}
+.form-group select option{color:#000;background:#fff}
+.reg-submit{width:100%;background:var(--gold);color:var(--navy);border:none;padding:15px;border-radius:8px;font-size:1.05rem;font-weight:800;cursor:pointer;transition:.2s;margin-top:4px}
+.reg-submit:hover{background:#e6951a}
+.reg-benefits{list-style:none;padding:0}
+.reg-benefits li{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1);color:#c8d6f5;font-size:.95rem}
+.reg-benefits li .ico{font-size:1.3rem;flex-shrink:0}
+
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.testi-card{background:#fff;border:1.5px solid #e8edf5;border-radius:14px;padding:22px}
+.stars{color:var(--gold);font-size:1.1rem;margin-bottom:10px}
+.testi-card p{color:var(--gray);font-size:.9rem;line-height:1.65;margin-bottom:16px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:10px}
+.avatar{width:40px;height:40px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1rem;flex-shrink:0}
+.testi-author strong{display:block;font-size:.9rem;color:var(--navy)}
+.testi-author span{font-size:.78rem;color:var(--gray)}
+
+/* CONTACT */
+.contact-section{background:var(--light)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.contact-info h3{color:var(--navy);font-size:1.4rem;margin-bottom:20px}
+.contact-item{display:flex;gap:14px;margin-bottom:20px;align-items:flex-start}
+.c-icon{width:44px;height:44px;background:var(--navy);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.c-label{font-size:.8rem;color:var(--gray);margin-bottom:2px}
+.c-val{font-weight:700;color:var(--navy)}
+
+/* CTA BANNER */
+.cta-banner{background:var(--gold);padding:60px 5%;text-align:center}
+.cta-banner h2{color:var(--navy);font-size:2.2rem;margin-bottom:10px}
+.cta-banner p{color:rgba(15,28,63,.7);margin-bottom:28px;font-size:1.05rem}
+.cta-banner .btn-navy{background:var(--navy);color:#fff;padding:15px 36px;border-radius:8px;font-size:1.05rem;font-weight:700;border:none;cursor:pointer;text-decoration:none;display:inline-block}
+
+/* FOOTER */
+footer{background:var(--navy);color:#a8bcd8;padding:40px 5%;text-align:center;font-size:.88rem}
+footer .logo{margin-bottom:10px;display:block}
+
+/* FLOATING CALL */
+.float-call{position:fixed;bottom:24px;right:24px;background:var(--red);color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;text-decoration:none;box-shadow:0 4px 20px rgba(230,57,70,.5);z-index:998;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(230,57,70,.5)}50%{box-shadow:0 4px 36px rgba(230,57,70,.8)}}
+
+/* SCROLL ANIMATE */
+.fade-in{opacity:0;transform:translateY(30px);transition:.6s}
+.fade-in.visible{opacity:1;transform:none}
+
+@media(max-width:768px){
+  .hero-inner,.reg-grid,.contact-grid{grid-template-columns:1fr}
+  .course-grid,.pdf-grid,.testi-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  h1{font-size:2.1rem}
+  h2{font-size:1.7rem}
+  nav ul{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="inner">
+    <div class="logo">SpeakUp <span>English</span></div>
+    <ul>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#downloads">Downloads</a></li>
+      <li><a href="#register">Register</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#register" class="nav-btn">Free Demo Class</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="badge">🏆 Khargone #1 English Coaching</div>
+      <h1>बोलो English,<br>बनो <em>Confident</em></h1>
+      <p>घर बैठे online register करो, fee structure download करो, और हमारे expert teachers से English सीखो — Spoken से IELTS तक सब कुछ।</p>
+      <div class="hero-btns">
+        <a href="#register" class="btn btn-gold">🎓 Free Demo Class Book करो</a>
+        <a href="#downloads" class="btn btn-outline">📄 Brochure Download करो</a>
+      </div>
+    </div>
+    <div class="hero-card fade-in">
+      <h3>हमारे Students की Success</h3>
+      <div class="stats-grid">
+        <div class="stat"><strong>2000+</strong><span>Students Trained</span></div>
+        <div class="stat"><strong>98%</strong><span>Success Rate</span></div>
+        <div class="stat"><strong>8 Yrs</strong><span>Experience</span></div>
+        <div class="stat"><strong>4.9★</strong><span>Google Rating</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="inner">
+    <div class="trust-item">✅ Certified Teachers</div>
+    <div class="trust-item">📱 WhatsApp Support</div>
+    <div class="trust-item">📄 Free Study Material</div>
+    <div class="trust-item">🎯 Guaranteed Progress</div>
+    <div class="trust-item">💯 Money Back Promise</div>
+  </div>
+</div>
+
+<!-- COURSES -->
+<section class="courses" id="courses">
+  <div class="container">
+    <p class="section-label">Our Programs</p>
+    <h2>अपना Course चुनो</h2>
+    <p class="sub">हर level के लिए perfect course — Beginner से Advanced तक</p>
+    <div class="course-grid">
+      <div class="course-card fade-in">
+        <div class="course-top">
+          <div class="icon">🗣️</div>
+          <h3>Spoken English</h3>
+          <p>Beginners के लिए — 3 Month Program</p>
+        </div>
+        <div class="course-body">
+          <ul>
+            <li>Daily speaking practice sessions</li>
+            <li>Grammar basics & vocabulary</li>
+            <li>Real-life conversation practice</li>
+            <li>Weekly mock tests</li>
+            <li>Free study material included</li>
+          </ul>
+          <div class="fee">
+            <strong>₹1,500/month</strong>
+            <span>Batch timing: 7AM / 5PM / 7PM</span>
+          </div>
+          <a href="#register" class="btn btn-gold" style="margin-top:14px;width:100%;text-align:center;display:block">Enroll Now →</a>
+        </div>
+      </div>
+      <div class="course-card fade-in">
+        <div class="course-top" style="background:#1a3a7c">
+          <div class="icon">💼</div>
+          <h3>Business English</h3>
+          <p>Working Professionals के लिए — 2 Month</p>
+        </div>
+        <div class="course-body">
+          <ul>
+            <li>Email & presentation writing</li>
+            <li>Interview preparation</li>
+            <li>Professional vocabulary</li>
+            <li>Group discussions & debates</li>
+            <li>Certificate on completion</li>
+          </ul>
+          <div class="fee">
+            <strong>₹2,000/month</strong>
+            <span>Weekend batches available</span>
+          </div>
+          <a href="#register" class="btn btn-gold" style="margin-top:14px;width:100%;text-align:center;display:block">Enroll Now →</a>
+        </div>
+      </div>
+      <div class="course-card fade-in">
+        <div class="course-top" style="background:#7c1a1a">
+          <div class="icon">🎓</div>
+          <h3>IELTS / PTE Prep</h3>
+          <p>Exam Aspirants के लिए — 4 Month</p>
+        </div>
+        <div class="course-body">
+          <ul>
+            <li>All 4 modules: R/W/L/S</li>
+            <li>Full-length mock tests</li>
+            <li>Score improvement guarantee</li>
+            <li>Visa & abroad guidance</li>
+            <li>Small batch (max 10 students)</li>
+          </ul>
+          <div class="fee">
+            <strong>₹3,500/month</strong>
+            <span>Target band: 7.0+</span>
+          </div>
+          <a href="#register" class="btn btn-gold" style="margin-top:14px;width:100%;text-align:center;display:block">Enroll Now →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PDF DOWNLOADS -->
+<section class="pdf-section" id="downloads">
+  <div class="container">
+    <p class="section-label">Free Resources</p>
+    <h2>📥 Free Download करो</h2>
+    <p class="sub">अपना नाम और नंबर डालो — PDF तुरंत मिलेगी</p>
+    <div class="pdf-grid">
+      <div class="pdf-card fade-in" onclick="openPdfModal('fee')">
+        <div class="pdf-icon">📋</div>
+        <h4>Fee Structure 2024</h4>
+        <p>सभी courses की complete fee, EMI options और scholarship details</p>
+        <button class="pdf-btn">📥 Download करो</button>
+      </div>
+      <div class="pdf-card fade-in" onclick="openPdfModal('syllabus')">
+        <div class="pdf-icon">📚</div>
+        <h4>Course Syllabus</h4>
+        <p>Month-wise syllabus, topics covered और exam pattern की पूरी जानकारी</p>
+        <button class="pdf-btn">📥 Download करो</button>
+      </div>
+      <div class="pdf-card fade-in" onclick="openPdfModal('sample')">
+        <div class="pdf-icon">📝</div>
+        <h4>Free Sample Paper</h4>
+        <p>50 practice questions, vocabulary list और grammar rules — बिल्कुल free</p>
+        <button class="pdf-btn">📥 Download करो</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PDF MODAL -->
+<div class="modal-overlay" id="pdfModal">
+  <div class="modal">
+    <button class="close-btn" onclick="closePdfModal()">✕</button>
+    <div id="pdfFormWrap">
+      <h3>📄 PDF Download करें</h3>
+      <p id="pdfDesc">अपना details भरो — PDF तुरंत WhatsApp पर भेजी जाएगी</p>
+      <input type="text" id="pdf-name" placeholder="आपका नाम*">
+      <input type="tel" id="pdf-phone" placeholder="WhatsApp Number*">
+      <input type="text" id="pdf-area" placeholder="आपका Area / City">
+      <button class="submit-btn" onclick="submitPdf()">📥 PDF भेजो मुझे!</button>
+    </div>
+    <div class="success-msg" id="pdfSuccess">
+      <div class="check">✅</div>
+      <h4>PDF भेज दी गई!</h4>
+      <p>आपके WhatsApp पर अभी PDF मिलेगी। हमारी team जल्द contact करेगी।</p>
+    </div>
+  </div>
+</div>
+
+<!-- REGISTRATION -->
+<section class="register-section" id="register">
+  <div class="container">
+    <div class="reg-grid">
+      <div>
+        <p class="section-label">Online Registration</p>
+        <h2>आज ही Register करो</h2>
+        <p class="sub" style="color:#a8bcd8">Free demo class book करो — कोई advance payment नहीं चाहिए</p>
+        <ul class="reg-benefits">
+          <li><span class="ico">🎁</span><span><strong style="color:#fff">पहली class बिल्कुल FREE</strong><br>No payment, no commitment — बस आओ और सीखो</span></li>
+          <li><span class="ico">⚡</span><span><strong style="color:#fff">तुरंत Confirmation</strong><br>Form भरते ही WhatsApp पर slot confirm होगा</span></li>
+          <li><span class="ico">📞</span><span><strong style="color:#fff">24 घंटे में Call</strong><br>हमारी team आपको personally call करेगी</span></li>
+          <li><span class="ico">🏅</span><span><strong style="color:#fff">Scholarship Available</strong><br>Meritorious students को 20% fee waiver</span></li>
+        </ul>
+      </div>
+      <div class="reg-form">
+        <div id="regFormWrap">
+          <div class="form-row">
+            <div class="form-group">
+              <label>पूरा नाम *</label>
+              <input type="text" id="reg-name" placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label>Mobile / WhatsApp *</label>
+              <input type="tel" id="reg-phone" placeholder="10-digit number">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" id="reg-email" placeholder="email@gmail.com">
+            </div>
+            <div class="form-group">
+              <label>Area / City *</label>
+              <input type="text" id="reg-area" placeholder="Khargone / area">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Course Interest *</label>
+            <select id="reg-course">
+              <option value="">-- Course चुनो --</option>
+              <option>Spoken English (Beginner)</option>
+              <option>Business English</option>
+              <option>IELTS / PTE Preparation</option>
+              <option>Kids English (Age 6-12)</option>
+              <option>Abhi decide nahi kiya</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Preferred Batch Time</label>
+            <select id="reg-batch">
+              <option value="">-- Time chuno --</option>
+              <option>Morning 7:00 AM</option>
+              <option>Evening 5:00 PM</option>
+              <option>Evening 7:00 PM</option>
+              <option>Weekend (Sat-Sun)</option>
+            </select>
+          </div>
+          <button class="reg-submit" onclick="submitReg()">🎓 Free Demo Class Book करो →</button>
+        </div>
+        <div class="success-msg" id="regSuccess">
+          <div class="check">🎉</div>
+          <h4 style="color:var(--navy)">Registration हो गई!</h4>
+          <p style="color:var(--gray)">बधाई हो! हमारी team 24 घंटे में call करेगी। WhatsApp पर confirmation आ गई होगी।</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="padding:80px 5%;background:#fff">
+  <div class="container">
+    <p class="section-label">Student Reviews</p>
+    <h2>Students क्या कहते हैं?</h2>
+    <p class="sub">Real students, real results</p>
+    <div class="testi-grid">
+      <div class="testi-card fade-in">
+        <div class="stars">★★★★★</div>
+        <p>"SpeakUp join करने के 3 months बाद मेरा job interview में confidence बढ़ गया। Teacher बहुत patient हैं और practical सिखाते हैं।"</p>
+        <div class="testi-author">
+          <div class="avatar">R</div>
+          <div><strong>Rahul Patel</strong><span>Spoken English — Batch 2023</span></div>
+        </div>
+      </div>
+      <div class="testi-card fade-in">
+        <div class="stars">★★★★★</div>
+        <p>"IELTS में 7.5 band मिला! पहले 5.5 था। यहाँ की teaching strategy और mock tests ने पूरी तरह बदल दिया मुझे।"</p>
+        <div class="testi-author">
+          <div class="avatar">P</div>
+          <div><strong>Priya Sharma</strong><span>IELTS Prep — Canada Visa ✅</span></div>
+        </div>
+      </div>
+      <div class="testi-card fade-in">
+        <div class="stars">★★★★★</div>
+        <p>"Online registration बहुत easy था। Form भरा, 2 घंटे में call आई, और अगले दिन class शुरू। बहुत professional।"</p>
+        <div class="testi-author">
+          <div class="avatar">A</div>
+          <div><strong>Anjali Verma</strong><span>Business English — MNC Employee</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <p class="section-label">Get In Touch</p>
+        <h2>हमसे मिलो या Call करो</h2>
+        <p class="sub">कोई भी सवाल है? हम हमेशा available हैं</p>
+        <div class="contact-item">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">Address</div>
+            <div class="c-val">Near Main Chowk, Khargone, MP — 451001</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">Call / WhatsApp</div>
+            <div class="c-val"><a href="tel:+919876543210" style="color:var(--navy);text-decoration:none">+91 98765 43210</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">⏰</div>
+          <div>
+            <div class="c-label">Timing</div>
+            <div class="c-val">Mon–Sat: 7AM – 9PM</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">📧</div>
+          <div>
+            <div class="c-label">Email</div>
+            <div class="c-val">info@speakupenglish.in</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.1);height:320px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px">
+        <div style="font-size:3rem">🗺️</div>
+        <p style="color:var(--gray);font-size:.95rem;text-align:center;padding:0 20px">Google Map यहाँ embed होगा<br><small>iframe से real location add करें</small></p>
+        <a href="https://maps.google.com" target="_blank" class="btn btn-gold" style="font-size:.9rem;padding:10px 20px">Google Maps पर देखो →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>🚀 इंतज़ार क्यों? आज ही शुरू करो!</h2>
+  <p>पहली class FREE है — कोई risk नहीं, सिर्फ opportunity है</p>
+  <a href="#register" class="btn-navy">🎓 अभी Free Demo Book करो</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="logo">SpeakUp <span style="color:var(--gold)">English</span> Academy</span>
+  <p>Near Main Chowk, Khargone, MP | +91 98765 43210 | info@speakupenglish.in</p>
+  <p style="margin-top:8px;font-size:.8rem;opacity:.6">© 2024 Aawaz academy Academy. All Rights Reserved.</p>
+</footer>
+
+<!-- FLOATING CALL BUTTON -->
+<a href="tel:+919876543210" class="float-call" title="Call Now">📞</a>
+
+<script>
+// PDF Modal
+let currentPdf = '';
+const pdfTitles = {
+  fee: 'Fee Structure PDF',
+  syllabus: 'Course Syllabus PDF',
+  sample: 'Free Sample Paper PDF'
+};
+
+function openPdfModal(type) {
+  currentPdf = type;
+  document.getElementById('pdfDesc').textContent = pdfTitles[type] + ' — अपना details भरो';
+  document.getElementById('pdfModal').classList.add('active');
+  document.getElementById('pdfFormWrap').style.display = 'block';
+  document.getElementById('pdfSuccess').style.display = 'none';
+}
+
+function closePdfModal() {
+  document.getElementById('pdfModal').classList.remove('active');
+  ['pdf-name','pdf-phone','pdf-area'].forEach(id => document.getElementById(id).value = '');
+}
+
+function submitPdf() {
+  const name = document.getElementById('pdf-name').value.trim();
+  const phone = document.getElementById('pdf-phone').value.trim();
+  if (!name || !phone) { alert('कृपया नाम और नंबर भरें'); return; }
+  if (phone.length < 10) { alert('Valid phone number enter करें'); return; }
+  // Store lead
+  const leads = JSON.parse(localStorage.getItem('pdf_leads') || '[]');
+  leads.push({ name, phone, area: document.getElementById('pdf-area').value, pdf: currentPdf, time: new Date().toLocaleString('hi-IN') });
+  localStorage.setItem('pdf_leads', JSON.stringify(leads));
+  document.getElementById('pdfFormWrap').style.display = 'none';
+  document.getElementById('pdfSuccess').style.display = 'block';
+  // Simulate WhatsApp redirect after 2s
+  setTimeout(() => {
+    const msg = encodeURIComponent(`नमस्ते! मैं ${name} हूँ। मुझे ${pdfTitles[currentPdf]} चाहिए।`);
+    window.open(`https://wa.me/919876543210?text=${msg}`, '_blank');
+  }, 1800);
+}
+
+// Registration
+function submitReg() {
+  const name = document.getElementById('reg-name').value.trim();
+  const phone = document.getElementById('reg-phone').value.trim();
+  const area = document.getElementById('reg-area').value.trim();
+  const course = document.getElementById('reg-course').value;
+  if (!name || !phone || !area || !course) { alert('कृपया सभी required fields भरें (*)'); return; }
+  if (phone.length < 10) { alert('Valid 10-digit number enter करें'); return; }
+  // Store registration
+  const regs = JSON.parse(localStorage.getItem('registrations') || '[]');
+  regs.push({
+    name, phone, area, course,
+    email: document.getElementById('reg-email').value,
+    batch: document.getElementById('reg-batch').value,
+    time: new Date().toLocaleString('hi-IN')
+  });
+  localStorage.setItem('registrations', JSON.stringify(regs));
+  document.getElementById('regFormWrap').style.display = 'none';
+  document.getElementById('regSuccess').style.display = 'block';
+  // WhatsApp confirmation
+  setTimeout(() => {
+    const msg = encodeURIComponent(`नमस्ते Aawaz academy! मेरा नाम ${name} है। मैंने ${course} के लिए register किया है। मेरा number: ${phone}, Area: ${area}`);
+    window.open(`https://wa.me/919876543210?text=${msg}`, '_blank');
+  }, 1500);
+}
+
+// Scroll animations
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Close modal on overlay click
+document.getElementById('pdfModal').addEventListener('click', function(e) {
+  if(e.target === this) closePdfModal();
+});
+</script>
+</body>
+</html>
