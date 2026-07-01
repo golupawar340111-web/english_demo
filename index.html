@@ -1,592 +1,962 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>SpeakWell Academy — Spoken English Coaching Centre</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aawaz Academy | Speak With Confidence</title>
+<meta name="description" content="SpeakWell Academy — Premier Spoken English Coaching in Indore. Check your admission, download study material, view courses and fee status.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+/* ============================================================
+   SPEAKWELL ACADEMY — Design Tokens
+   Navy + Royal Blue + Clean White + Semantic greens/ambers
+   ============================================================ */
 :root{
-  --navy:#0f1c3f;--blue:#1a3a7c;--gold:#f5a623;--red:#e63946;
-  --light:#f0f4ff;--white:#fff;--gray:#64748b;--dark:#1e293b
+  --navy:#0f172a;--navy2:#1e293b;
+  --blue:#2563eb;--blue-dark:#1d4ed8;--blue-pale:#eff6ff;--blue-border:#bfdbfe;
+  --green:#10b981;--green-pale:#ecfdf5;--green-border:#a7f3d0;
+  --amber:#f59e0b;--amber-pale:#fffbeb;--amber-border:#fde68a;
+  --red:#ef4444;--red-pale:#fef2f2;--red-border:#fecaca;
+  --white:#ffffff;--off:#f8fafc;--gray:#f1f5f9;
+  --ink:#0f172a;--ink2:#334155;--ink3:#64748b;--ink4:#94a3b8;
+  --line:#e2e8f0;--line2:#cbd5e1;
+  --r:10px;--rs:7px;
+  --shadow:0 1px 3px rgba(0,0,0,.07),0 4px 14px rgba(0,0,0,.05);
+  --shadow-lg:0 10px 40px rgba(0,0,0,.1);
 }
+*{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Segoe UI',sans-serif;color:var(--dark);background:#fff}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+button{font-family:'Inter',sans-serif;cursor:pointer;border:none;background:none}
+input,select{font-family:'Inter',sans-serif}
 
-/* NAV */
-nav{position:fixed;top:0;width:100%;background:var(--navy);z-index:999;padding:14px 5%}
-nav .inner{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:auto}
-.logo{color:#fff;font-size:1.4rem;font-weight:800;letter-spacing:-0.5px}
-.logo span{color:var(--gold)}
-nav ul{list-style:none;display:flex;gap:28px}
-nav ul a{color:#c8d6f5;text-decoration:none;font-size:.9rem;transition:.2s}
-nav ul a:hover{color:var(--gold)}
-.nav-btn{background:var(--gold);color:var(--navy)!important;padding:8px 18px;border-radius:6px;font-weight:700!important}
+/* ---- TOP STRIP ---- */
+.top-strip{background:var(--navy);color:rgba(255,255,255,.75);font-size:.74rem;padding:7px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;letter-spacing:.2px}
+.top-strip span{display:inline-flex;align-items:center;gap:6px}
+.ts-dots{display:flex;gap:16px;flex-wrap:wrap}
 
-/* HERO */
-.hero{background:linear-gradient(135deg,var(--navy) 60%,var(--blue));min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px}
-.hero-inner{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.badge{display:inline-block;background:rgba(245,166,35,.15);border:1px solid var(--gold);color:var(--gold);padding:5px 14px;border-radius:20px;font-size:.8rem;font-weight:600;margin-bottom:16px}
-h1{color:#fff;font-size:3rem;line-height:1.15;font-weight:900;margin-bottom:18px}
-h1 em{color:var(--gold);font-style:normal}
-.hero p{color:#a8bcd8;font-size:1.1rem;line-height:1.7;margin-bottom:30px}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
-.btn{padding:14px 28px;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;border:none;text-decoration:none;display:inline-block;transition:.2s}
-.btn-gold{background:var(--gold);color:var(--navy)}
-.btn-gold:hover{background:#e6951a}
-.btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4)}
-.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+/* ---- NAVBAR ---- */
+header{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--line);box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.nav{max-width:1280px;margin:0 auto;padding:14px 5%;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-mark{width:40px;height:40px;background:var(--blue);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;flex-shrink:0}
+.brand-name{font-family:'Playfair Display',serif;font-size:1.18rem;font-weight:700;color:var(--navy);letter-spacing:-.01em;line-height:1.2}
+.brand-name span{color:var(--blue)}
+.brand-sub{font-size:.65rem;color:var(--ink3);letter-spacing:.3px;display:block}
+.nav-links{display:flex;gap:4px}
+.nav-links a{font-size:.84rem;font-weight:500;color:var(--ink2);padding:8px 14px;border-radius:var(--rs);transition:background .2s,color .2s}
+.nav-links a:hover,.nav-links a.active{background:var(--blue-pale);color:var(--blue)}
+.nav-cta{display:inline-flex;align-items:center;gap:7px;background:var(--blue);color:#fff;padding:10px 20px;border-radius:var(--rs);font-size:.84rem;font-weight:600;transition:background .2s,transform .15s}
+.nav-cta:hover{background:var(--blue-dark);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:4px;padding:6px;background:var(--gray);border-radius:var(--rs)}
+.hamburger span{width:20px;height:2px;background:var(--ink);border-radius:2px;display:block}
 
-/* HERO CARD */
-.hero-card{background:rgba(255,255,255,.06);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:28px}
-.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.stat{text-align:center;padding:16px;background:rgba(255,255,255,.06);border-radius:10px}
-.stat strong{display:block;font-size:2rem;color:var(--gold);font-weight:900}
-.stat span{font-size:.8rem;color:#a8bcd8}
-.hero-card h3{color:#fff;margin-bottom:16px;font-size:1rem;text-align:center;opacity:.7}
+/* ---- HERO ---- */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,#1a3560 100%);padding:80px 5% 90px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:rgba(37,99,235,.15);top:-200px;right:-150px;pointer-events:none}
+.hero::after{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:rgba(16,185,129,.07);bottom:-150px;left:-80px;pointer-events:none}
+.hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.15fr 0.85fr;gap:60px;align-items:center;position:relative;z-index:2}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.8);padding:6px 14px;border-radius:20px;font-size:.72rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:22px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,3.4rem);font-weight:800;color:#fff;line-height:1.2;letter-spacing:-.02em;margin-bottom:20px}
+.hero h1 em{font-style:italic;color:#60a5fa}
+.type-line{font-size:1.15rem;color:rgba(255,255,255,.75);margin-bottom:30px;min-height:1.6em;display:flex;align-items:center;gap:8px}
+.type-text{color:#34d399;font-weight:600}
+.type-cursor{display:inline-block;width:2px;height:1.1em;background:#34d399;margin-left:2px;animation:blink 1s step-end infinite;vertical-align:middle}
+@keyframes blink{50%{opacity:0}}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+.btn-hero-p{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;padding:13px 26px;border-radius:var(--rs);font-weight:700;font-size:.9rem;transition:background .2s,transform .2s;box-shadow:0 8px 24px rgba(37,99,235,.4)}
+.btn-hero-p:hover{background:var(--blue-dark);transform:translateY(-2px)}
+.btn-hero-g{display:inline-flex;align-items:center;gap:8px;border:1.5px solid rgba(255,255,255,.25);color:rgba(255,255,255,.85);padding:13px 24px;border-radius:var(--rs);font-size:.88rem;font-weight:500;transition:border-color .2s,background .2s}
+.btn-hero-g:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.06)}
+.hero-stats{display:flex;gap:28px;flex-wrap:wrap}
+.hs{display:flex;flex-direction:column;gap:3px}
+.hs strong{font-family:'Playfair Display',serif;font-size:1.6rem;color:#fff;line-height:1}
+.hs span{font-size:.72rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.5px}
 
-/* TRUST BAR */
-.trust-bar{background:var(--gold);padding:14px 5%}
-.trust-bar .inner{max-width:1100px;margin:auto;display:flex;justify-content:space-around;flex-wrap:wrap;gap:10px}
-.trust-item{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--navy);font-size:.9rem}
+/* Hero right card */
+.hero-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(10px);border-radius:14px;padding:26px;position:relative}
+.hc-badge{position:absolute;top:-12px;right:18px;background:var(--green);color:#fff;font-size:.68rem;font-weight:700;padding:5px 14px;border-radius:20px;letter-spacing:.3px}
+.hc-title{font-family:'Playfair Display',serif;font-size:1rem;color:#fff;margin-bottom:18px}
+.hc-list{display:flex;flex-direction:column;gap:10px}
+.hc-item{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:11px 13px;border-radius:8px}
+.hc-item-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.hc-item span{font-size:.84rem;color:rgba(255,255,255,.8);font-weight:500}
+.hc-item small{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.45)}
+.dot-blue{background:var(--blue)}
+.dot-green{background:var(--green)}
+.dot-amber{background:var(--amber)}
 
-/* SECTIONS */
-section{padding:80px 5%}
-.container{max-width:1100px;margin:auto}
-.section-label{color:var(--red);font-size:.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
-h2{font-size:2.2rem;font-weight:900;color:var(--navy);margin-bottom:12px;line-height:1.2}
-.sub{color:var(--gray);font-size:1.05rem;margin-bottom:40px;max-width:600px}
+/* ---- SECTION SHARED ---- */
+.sec{padding:80px 5%;max-width:1280px;margin:0 auto}
+.sec-label{font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,2.8vw,2.3rem);font-weight:700;color:var(--navy);margin-bottom:10px;letter-spacing:-.01em}
+.sec-sub{color:var(--ink3);font-size:.94rem;max-width:580px;margin-bottom:44px;line-height:1.7}
+.sec-head{margin-bottom:44px}
 
-/* COURSES */
-.courses{background:var(--light)}
-.course-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.course-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.07);transition:.3s}
-.course-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.12)}
-.course-top{padding:22px;background:var(--navy)}
-.course-top .icon{font-size:2rem;margin-bottom:10px}
-.course-top h3{color:#fff;font-size:1.15rem;font-weight:800}
-.course-top p{color:#a8bcd8;font-size:.85rem;margin-top:4px}
-.course-body{padding:20px}
-.course-body ul{list-style:none}
-.course-body ul li{padding:7px 0;border-bottom:1px solid #f0f0f0;font-size:.9rem;color:var(--gray);display:flex;gap:8px}
-.course-body ul li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0}
-.fee{margin-top:14px;padding:12px;background:var(--light);border-radius:8px;text-align:center}
-.fee strong{color:var(--navy);font-size:1.2rem}
-.fee span{font-size:.8rem;color:var(--gray);display:block}
+/* ---- TABBED DASHBOARD ---- */
+.dashboard-wrap{background:var(--off);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:60px 5% 80px}
+.dash-inner{max-width:1280px;margin:0 auto}
 
-/* PDF SECTION */
-.pdf-section{background:var(--navy)}
-.pdf-section h2,.pdf-section .section-label{color:#fff}
-.pdf-section .sub{color:#a8bcd8}
-.pdf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.pdf-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:22px;text-align:center;transition:.3s;cursor:pointer}
-.pdf-card:hover{background:rgba(245,166,35,.15);border-color:var(--gold)}
-.pdf-card .pdf-icon{font-size:2.5rem;margin-bottom:12px}
-.pdf-card h4{color:#fff;font-size:1rem;margin-bottom:6px}
-.pdf-card p{color:#a8bcd8;font-size:.82rem;margin-bottom:16px}
-.pdf-btn{background:var(--gold);color:var(--navy);border:none;padding:9px 20px;border-radius:6px;font-weight:700;cursor:pointer;font-size:.88rem;width:100%;transition:.2s}
-.pdf-btn:hover{background:#e6951a}
+.tab-bar{display:flex;gap:4px;background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:5px;flex-wrap:wrap;margin-bottom:32px;box-shadow:var(--shadow)}
+.tab-btn{flex:1;min-width:130px;display:flex;align-items:center;justify-content:center;gap:7px;padding:11px 16px;border-radius:8px;font-size:.84rem;font-weight:600;color:var(--ink3);transition:background .2s,color .2s;white-space:nowrap}
+.tab-btn:hover{background:var(--blue-pale);color:var(--blue)}
+.tab-btn.active{background:var(--blue);color:#fff;box-shadow:0 4px 12px rgba(37,99,235,.3)}
+.tab-content{display:none}
+.tab-content.active{display:block}
 
-/* MODAL */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;align-items:center;justify-content:center}
-.modal-overlay.active{display:flex}
-.modal{background:#fff;border-radius:16px;padding:36px;width:90%;max-width:440px;position:relative}
-.modal h3{color:var(--navy);font-size:1.4rem;margin-bottom:6px}
-.modal p{color:var(--gray);font-size:.9rem;margin-bottom:22px}
-.modal input,.modal select{width:100%;padding:12px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:.95rem;margin-bottom:14px;outline:none;font-family:inherit;transition:.2s}
-.modal input:focus,.modal select:focus{border-color:var(--blue)}
-.modal .submit-btn{width:100%;background:var(--navy);color:#fff;border:none;padding:14px;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;transition:.2s}
-.modal .submit-btn:hover{background:var(--blue)}
-.close-btn{position:absolute;top:14px;right:18px;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--gray)}
-.success-msg{display:none;text-align:center;padding:10px}
-.success-msg .check{font-size:3rem;margin-bottom:10px}
-.success-msg h4{color:var(--navy);margin-bottom:6px}
-.success-msg p{color:var(--gray);font-size:.9rem}
+/* --- TAB 1: Student Admission Search --- */
+.search-box{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:28px;margin-bottom:24px;box-shadow:var(--shadow)}
+.search-row{display:flex;gap:10px;flex-wrap:wrap}
+.search-input-wrap{flex:1;min-width:220px;position:relative}
+.search-input-wrap svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--ink4)}
+.search-input-wrap input{width:100%;padding:12px 14px 12px 42px;border:1.5px solid var(--line);border-radius:var(--rs);font-size:.9rem;color:var(--ink);background:var(--off);outline:none;transition:border-color .2s,box-shadow .2s}
+.search-input-wrap input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.1);background:var(--white)}
+.search-input-wrap input::placeholder{color:var(--ink4)}
+.btn-search{display:inline-flex;align-items:center;gap:7px;background:var(--blue);color:#fff;padding:12px 22px;border-radius:var(--rs);font-weight:600;font-size:.88rem;transition:background .2s;white-space:nowrap}
+.btn-search:hover{background:var(--blue-dark)}
+.btn-clear{padding:12px 16px;border-radius:var(--rs);border:1.5px solid var(--line);color:var(--ink3);font-size:.84rem;transition:border-color .2s}
+.btn-clear:hover{border-color:var(--line2)}
 
-/* REGISTRATION */
-.register-section{background:linear-gradient(135deg,var(--blue),var(--navy))}
-.register-section h2{color:#fff}
-.register-section .section-label{color:var(--gold)}
-.register-section .sub{color:#a8bcd8}
-.reg-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start}
-.reg-form{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:32px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.form-group{margin-bottom:16px}
-.form-group label{display:block;color:#c8d6f5;font-size:.85rem;margin-bottom:6px;font-weight:600}
-.form-group input,.form-group select{width:100%;padding:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:8px;color:#fff;font-size:.95rem;outline:none;font-family:inherit;transition:.2s}
-.form-group input::placeholder{color:rgba(255,255,255,.4)}
-.form-group input:focus,.form-group select:focus{border-color:var(--gold);background:rgba(255,255,255,.12)}
-.form-group select option{color:#000;background:#fff}
-.reg-submit{width:100%;background:var(--gold);color:var(--navy);border:none;padding:15px;border-radius:8px;font-size:1.05rem;font-weight:800;cursor:pointer;transition:.2s;margin-top:4px}
-.reg-submit:hover{background:#e6951a}
-.reg-benefits{list-style:none;padding:0}
-.reg-benefits li{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1);color:#c8d6f5;font-size:.95rem}
-.reg-benefits li .ico{font-size:1.3rem;flex-shrink:0}
+#search-results{margin-top:20px}
+.result-table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.86rem}
+thead{background:var(--navy);color:#fff}
+thead th{padding:12px 16px;text-align:left;font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}
+thead th:first-child{border-radius:8px 0 0 8px}
+thead th:last-child{border-radius:0 8px 8px 0}
+tbody tr{border-bottom:1px solid var(--line);transition:background .15s}
+tbody tr:hover{background:var(--blue-pale)}
+tbody tr:last-child{border-bottom:none}
+td{padding:13px 16px;vertical-align:middle}
+.td-roll{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--blue);font-size:.82rem}
+.td-name{font-weight:600;color:var(--navy)}
+.td-batch{color:var(--ink3);font-size:.82rem}
 
-/* TESTIMONIALS */
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.testi-card{background:#fff;border:1.5px solid #e8edf5;border-radius:14px;padding:22px}
-.stars{color:var(--gold);font-size:1.1rem;margin-bottom:10px}
-.testi-card p{color:var(--gray);font-size:.9rem;line-height:1.65;margin-bottom:16px;font-style:italic}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:20px;font-size:.72rem;font-weight:700;white-space:nowrap}
+.badge-green{background:var(--green-pale);color:var(--green);border:1px solid var(--green-border)}
+.badge-amber{background:var(--amber-pale);color:#b45309;border:1px solid var(--amber-border)}
+.badge-red{background:var(--red-pale);color:var(--red);border:1px solid var(--red-border)}
+.badge-blue{background:var(--blue-pale);color:var(--blue);border:1px solid var(--blue-border)}
+
+.empty-state{text-align:center;padding:44px 20px;color:var(--ink3)}
+.empty-icon{font-size:2rem;margin-bottom:10px}
+.no-result-msg{display:none;padding:16px;background:var(--red-pale);border:1px solid var(--red-border);border-radius:var(--rs);color:var(--red);font-size:.86rem;font-weight:500;margin-top:12px}
+.no-result-msg.show{display:block}
+
+/* --- TAB 2: Courses & Pricing --- */
+.courses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.course-card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s}
+.course-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--blue-border)}
+.course-card.featured{border-color:var(--blue);position:relative}
+.course-card.featured::before{content:'Most Popular';position:absolute;top:0;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font-size:.64rem;font-weight:700;padding:4px 14px;border-radius:0 0 8px 8px;letter-spacing:.5px;white-space:nowrap}
+.cc-header{padding:24px 22px 16px;border-bottom:1px solid var(--line)}
+.cc-level{font-size:.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
+.cc-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+.cc-duration{font-size:.78rem;color:var(--ink3);display:flex;align-items:center;gap:5px}
+.cc-body{padding:18px 22px}
+.cc-price-row{display:flex;align-items:baseline;gap:6px;margin-bottom:6px}
+.cc-price{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--navy)}
+.cc-price sup{font-size:.9rem;font-family:'Inter',sans-serif;vertical-align:super}
+.cc-price-note{font-size:.75rem;color:var(--ink3)}
+.cc-emi{font-size:.76rem;color:var(--green);font-weight:600;margin-bottom:14px}
+.cc-features{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.cc-feat{display:flex;align-items:flex-start;gap:8px;font-size:.83rem;color:var(--ink2)}
+.cc-feat::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px}
+.cc-feat.dim{color:var(--ink4)}
+.cc-feat.dim::before{content:'×';color:var(--ink4)}
+.cc-cta{display:block;text-align:center;padding:11px;border-radius:var(--rs);font-weight:600;font-size:.86rem;transition:background .2s,color .2s}
+.cc-cta.fill{background:var(--blue);color:#fff}.cc-cta.fill:hover{background:var(--blue-dark)}
+.cc-cta.outline{border:1.5px solid var(--line);color:var(--ink2)}.cc-cta.outline:hover{border-color:var(--blue);color:var(--blue)}
+
+/* --- TAB 3: Downloads --- */
+.downloads-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.dl-card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:flex;align-items:center;gap:16px;transition:border-color .2s,box-shadow .2s}
+.dl-card:hover{border-color:var(--blue-border);box-shadow:var(--shadow)}
+.dl-icon{width:46px;height:46px;border-radius:var(--rs);background:var(--red-pale);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.dl-meta{flex:1}
+.dl-name{font-weight:600;font-size:.9rem;color:var(--navy);margin-bottom:3px}
+.dl-info{font-size:.74rem;color:var(--ink3);display:flex;gap:10px;flex-wrap:wrap}
+.dl-info span{display:flex;align-items:center;gap:4px}
+.btn-dl{display:inline-flex;align-items:center;gap:6px;background:var(--blue-pale);color:var(--blue);border:1px solid var(--blue-border);padding:8px 14px;border-radius:var(--rs);font-size:.78rem;font-weight:600;flex-shrink:0;transition:background .2s,color .2s}
+.btn-dl:hover{background:var(--blue);color:#fff}
+.dl-section-title{font-family:'Playfair Display',serif;font-size:1rem;color:var(--navy);margin:24px 0 12px;font-weight:700;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.dl-section-title:first-child{margin-top:0}
+
+/* --- TAB 4: Fee Status --- */
+.fee-search{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:24px;margin-bottom:24px;box-shadow:var(--shadow)}
+#fee-results{margin-top:0}
+.fee-card{background:var(--white);border:1.5px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:20px}
+.fee-card-header{padding:18px 22px;background:var(--navy);color:#fff;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.fch-left strong{font-size:1rem;display:block;margin-bottom:3px}
+.fch-left span{font-size:.76rem;opacity:.65}
+.fee-table{width:100%}
+.fee-table th{background:var(--gray);color:var(--ink2);font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;padding:10px 16px;text-align:left}
+.fee-table td{padding:12px 16px;border-bottom:1px solid var(--line);font-size:.86rem}
+.fee-table tr:last-child td{border-bottom:none}
+.fee-total-row td{font-weight:700;color:var(--navy);background:var(--blue-pale);border-bottom:none}
+.fee-note{padding:14px 22px;background:var(--amber-pale);border-top:1px solid var(--amber-border);font-size:.8rem;color:#78350f;display:flex;gap:8px;align-items:flex-start}
+
+/* ---- QUICK FEATURES STRIP ---- */
+.features-strip{background:var(--navy);padding:56px 5%}
+.features-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.feat{padding:24px 20px;border-right:1px solid rgba(255,255,255,.08);text-align:center}
+.feat:last-child{border-right:none}
+.feat-ico{font-size:1.6rem;margin-bottom:14px}
+.feat h3{font-family:'Playfair Display',serif;font-size:.96rem;color:#fff;margin-bottom:7px}
+.feat p{font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.6}
+
+/* ---- TESTIMONIALS ---- */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testi{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.testi-stars{color:#f59e0b;font-size:.85rem;margin-bottom:12px}
+.testi p{font-size:.88rem;color:var(--ink2);line-height:1.7;margin-bottom:16px;font-style:italic}
 .testi-author{display:flex;align-items:center;gap:10px}
-.avatar{width:40px;height:40px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1rem;flex-shrink:0}
-.testi-author strong{display:block;font-size:.9rem;color:var(--navy)}
-.testi-author span{font-size:.78rem;color:var(--gray)}
+.ta-avatar{width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.76rem;font-weight:700;flex-shrink:0}
+.ta-name{font-size:.84rem;font-weight:600;color:var(--navy)}
+.ta-batch{font-size:.72rem;color:var(--ink3)}
 
-/* CONTACT */
-.contact-section{background:var(--light)}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
-.contact-info h3{color:var(--navy);font-size:1.4rem;margin-bottom:20px}
-.contact-item{display:flex;gap:14px;margin-bottom:20px;align-items:flex-start}
-.c-icon{width:44px;height:44px;background:var(--navy);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
-.c-label{font-size:.8rem;color:var(--gray);margin-bottom:2px}
-.c-val{font-weight:700;color:var(--navy)}
+/* ---- ENROLL CTA ---- */
+.enroll-cta{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%);padding:70px 5%;text-align:center}
+.enroll-cta h2{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3vw,2.5rem);color:#fff;margin-bottom:14px;letter-spacing:-.01em}
+.enroll-cta p{color:rgba(255,255,255,.78);margin-bottom:30px;font-size:.96rem}
+.enroll-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-enroll{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--blue);padding:14px 30px;border-radius:var(--rs);font-weight:700;font-size:.92rem;transition:opacity .2s,transform .2s}
+.btn-enroll:hover{opacity:.92;transform:translateY(-2px)}
+.btn-wa{display:inline-flex;align-items:center;gap:8px;border:1.5px solid rgba(255,255,255,.35);color:#fff;padding:14px 28px;border-radius:var(--rs);font-size:.9rem;font-weight:500;transition:border-color .2s,background .2s}
+.btn-wa:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.6)}
 
-/* CTA BANNER */
-.cta-banner{background:var(--gold);padding:60px 5%;text-align:center}
-.cta-banner h2{color:var(--navy);font-size:2.2rem;margin-bottom:10px}
-.cta-banner p{color:rgba(15,28,63,.7);margin-bottom:28px;font-size:1.05rem}
-.cta-banner .btn-navy{background:var(--navy);color:#fff;padding:15px 36px;border-radius:8px;font-size:1.05rem;font-weight:700;border:none;cursor:pointer;text-decoration:none;display:inline-block}
+/* ---- FOOTER ---- */
+footer{background:var(--navy);padding:50px 5% 24px}
+.footer-top{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.08)}
+.footer-brand p{font-size:.83rem;color:rgba(255,255,255,.5);margin-top:12px;line-height:1.7}
+.footer-col h4{color:#fff;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:14px}
+.footer-col ul{display:flex;flex-direction:column;gap:9px}
+.footer-col ul li a{font-size:.83rem;color:rgba(255,255,255,.5);transition:color .2s}
+.footer-col ul li a:hover{color:rgba(255,255,255,.85)}
+.footer-contact-item{display:flex;gap:8px;font-size:.83rem;color:rgba(255,255,255,.5);margin-bottom:10px;align-items:flex-start;line-height:1.5}
+.footer-bottom{max-width:1280px;margin:24px auto 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:.74rem;color:rgba(255,255,255,.3)}
 
-/* FOOTER */
-footer{background:var(--navy);color:#a8bcd8;padding:40px 5%;text-align:center;font-size:.88rem}
-footer .logo{margin-bottom:10px;display:block}
-
-/* FLOATING CALL */
-.float-call{position:fixed;bottom:24px;right:24px;background:var(--red);color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;text-decoration:none;box-shadow:0 4px 20px rgba(230,57,70,.5);z-index:998;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(230,57,70,.5)}50%{box-shadow:0 4px 36px rgba(230,57,70,.8)}}
-
-/* SCROLL ANIMATE */
-.fade-in{opacity:0;transform:translateY(30px);transition:.6s}
-.fade-in.visible{opacity:1;transform:none}
-
-@media(max-width:768px){
-  .hero-inner,.reg-grid,.contact-grid{grid-template-columns:1fr}
-  .course-grid,.pdf-grid,.testi-grid{grid-template-columns:1fr}
-  .form-row{grid-template-columns:1fr}
-  h1{font-size:2.1rem}
-  h2{font-size:1.7rem}
-  nav ul{display:none}
+/* ---- RESPONSIVE ---- */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .courses-grid{grid-template-columns:repeat(2,1fr)}
+  .features-inner{grid-template-columns:repeat(2,1fr)}
+  .testi-grid{grid-template-columns:1fr 1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
 }
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .courses-grid{grid-template-columns:1fr}
+  .downloads-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .features-inner{grid-template-columns:1fr}
+  .feat{border-right:none;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:24px}
+  .feat:last-child{border-bottom:none}
+  .tab-btn span{display:none}
+  .footer-top{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+  .hero{padding:60px 5% 70px}
+  .search-row{flex-direction:column}
+  .btn-search,.btn-clear{width:100%;justify-content:center}
+  .sec{padding:56px 5%}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="inner">
-    <div class="logo">SpeakUp <span>English</span></div>
-    <ul>
-      <li><a href="#courses">Courses</a></li>
-      <li><a href="#downloads">Downloads</a></li>
-      <li><a href="#register">Register</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#register" class="nav-btn">Free Demo Class</a></li>
-    </ul>
+<!-- TOP STRIP -->
+<div class="top-strip">
+  <div class="ts-dots">
+    <span>📍 456, Palasia Square, Indore, MP</span>
+    <span>📞 +91 98765 43210</span>
+    <span>✉ info@speakwellacademy.in</span>
   </div>
-</nav>
+  <div>🕘 Mon–Sat: 7AM – 8PM</div>
+</div>
+
+<!-- NAVBAR -->
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="brand-mark">🎤</div>
+      <div>
+        <div class="brand-name">Speak<span>Well</span> Academy</div>
+        <div class="brand-sub">Spoken English Coaching Centre</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#dashboard">Students</a>
+      <a href="#dashboard">Courses</a>
+      <a href="#dashboard">Downloads</a>
+      <a href="#dashboard">Fee Status</a>
+    </div>
+    <a href="#enroll" class="nav-cta">Enroll Now →</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</header>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <div class="badge">🏆 Khargone #1 English Coaching</div>
-      <h1>बोलो English,<br>बनो <em>Confident</em></h1>
-      <p>घर बैठे online register करो, fee structure download करो, और हमारे expert teachers से English सीखो — Spoken से IELTS तक सब कुछ।</p>
-      <div class="hero-btns">
-        <a href="#register" class="btn btn-gold">🎓 Free Demo Class Book करो</a>
-        <a href="#downloads" class="btn btn-outline">📄 Brochure Download करो</a>
+      <div class="hero-eyebrow">📚 Batch 2025–26 Open</div>
+      <h1>Speak English with<br><em>confidence</em> and clarity</h1>
+      <div class="type-line">
+        Today's lesson: <span class="type-text" id="type-text"></span><span class="type-cursor"></span>
+      </div>
+      <div class="hero-actions">
+        <a href="#dashboard" class="btn-hero-p">🔍 Check My Admission</a>
+        <a href="#dashboard" class="btn-hero-g">📥 Download Study Material</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hs"><strong>2,400+</strong><span>Students Trained</span></div>
+        <div class="hs"><strong>8 yrs</strong><span>Of Excellence</span></div>
+        <div class="hs"><strong>97%</strong><span>Pass Rate</span></div>
+        <div class="hs"><strong>12+</strong><span>Expert Trainers</span></div>
       </div>
     </div>
-    <div class="hero-card fade-in">
-      <h3>हमारे Students की Success</h3>
-      <div class="stats-grid">
-        <div class="stat"><strong>2000+</strong><span>Students Trained</span></div>
-        <div class="stat"><strong>98%</strong><span>Success Rate</span></div>
-        <div class="stat"><strong>8 Yrs</strong><span>Experience</span></div>
-        <div class="stat"><strong>4.9★</strong><span>Google Rating</span></div>
+    <div class="hero-card">
+      <div class="hc-badge">2025-26 Batches</div>
+      <div class="hc-title">Currently Running Batches</div>
+      <div class="hc-list">
+        <div class="hc-item"><div class="hc-item-dot dot-green"></div><span>Foundation Batch A</span><small>7:00 AM</small></div>
+        <div class="hc-item"><div class="hc-item-dot dot-blue"></div><span>Intermediate Batch B</span><small>10:00 AM</small></div>
+        <div class="hc-item"><div class="hc-item-dot dot-amber"></div><span>Advanced Batch C</span><small>5:30 PM</small></div>
+        <div class="hc-item"><div class="hc-item-dot dot-green"></div><span>Corporate Batch D</span><small>7:30 PM</small></div>
+        <div class="hc-item"><div class="hc-item-dot dot-blue"></div><span>Kids Batch (6–12 yrs)</span><small>4:00 PM</small></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TRUST BAR -->
-<div class="trust-bar">
-  <div class="inner">
-    <div class="trust-item">✅ Certified Teachers</div>
-    <div class="trust-item">📱 WhatsApp Support</div>
-    <div class="trust-item">📄 Free Study Material</div>
-    <div class="trust-item">🎯 Guaranteed Progress</div>
-    <div class="trust-item">💯 Money Back Promise</div>
+<!-- DASHBOARD -->
+<div class="dashboard-wrap" id="dashboard">
+  <div class="dash-inner">
+    <div class="sec-label">Student Portal</div>
+    <div class="sec-title" style="margin-bottom:6px">Your Quick Access Hub</div>
+    <p style="color:var(--ink3);margin-bottom:28px;font-size:.94rem">Check admission, explore courses, download PDFs and verify your fee payment status.</p>
+
+    <div class="tab-bar" role="tablist">
+      <button class="tab-btn active" onclick="switchTab('admission',this)" role="tab">🎓 <span>Admission List</span></button>
+      <button class="tab-btn" onclick="switchTab('courses',this)" role="tab">📖 <span>Courses & Pricing</span></button>
+      <button class="tab-btn" onclick="switchTab('downloads',this)" role="tab">📥 <span>Downloads</span></button>
+      <button class="tab-btn" onclick="switchTab('fees',this)" role="tab">💰 <span>Fee Status</span></button>
+    </div>
+
+    <!-- TAB: ADMISSION LIST -->
+    <div class="tab-content active" id="tab-admission">
+      <div class="search-box">
+        <p style="font-size:.88rem;color:var(--ink3);margin-bottom:16px">Enter your full name or roll number to check your admission status.</p>
+        <div class="search-row">
+          <div class="search-input-wrap">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="text" id="student-search" placeholder="Type your name or roll number (e.g. SW2025-001)">
+          </div>
+          <select id="batch-filter" style="padding:12px 14px;border:1.5px solid var(--line);border-radius:var(--rs);color:var(--ink);background:var(--off);font-size:.88rem;min-width:160px;outline:none">
+            <option value="all">All Batches</option>
+            <option value="foundation">Foundation</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+            <option value="corporate">Corporate</option>
+          </select>
+          <button class="btn-search" onclick="searchStudents()">🔍 Search</button>
+          <button class="btn-clear" onclick="clearSearch()">Clear</button>
+        </div>
+        <div class="no-result-msg" id="no-result-msg">❌ No student found with that name or roll number. Please check spelling or contact the office.</div>
+      </div>
+
+      <div id="search-results">
+        <div class="result-table-wrap">
+          <table>
+            <thead>
+              <tr><th>Roll No.</th><th>Student Name</th><th>Batch</th><th>Course</th><th>Start Date</th><th>Admission</th><th>Fee Status</th></tr>
+            </thead>
+            <tbody id="student-tbody">
+              <tr><td class="td-roll">SW2025-001</td><td class="td-name">Aarav Sharma</td><td class="td-batch">Foundation A — 7:00 AM</td><td>Foundation English</td><td>1 Jul 2025</td><td><span class="badge badge-green">✓ Confirmed</span></td><td><span class="badge badge-green">✓ Paid</span></td></tr>
+              <tr><td class="td-roll">SW2025-002</td><td class="td-name">Priya Patel</td><td class="td-batch">Intermediate B — 10:00 AM</td><td>Intermediate English</td><td>1 Jul 2025</td><td><span class="badge badge-green">✓ Confirmed</span></td><td><span class="badge badge-amber">⏳ Partial</span></td></tr>
+              <tr><td class="td-roll">SW2025-003</td><td class="td-name">Rahul Verma</td><td class="td-batch">Advanced C — 5:30 PM</td><td>Advanced Communication</td><td>1 Jul 2025</td><td><span class="badge badge-green">✓ Confirmed</span></td><td><span class="badge badge-green">✓ Paid</span></td></tr>
+              <tr><td class="td-roll">SW2025-004</td><td class="td-name">Sneha Gupta</td><td class="td-batch">Foundation A — 7:00 AM</td><td>Foundation English</td><td>1 Jul 2025</td><td><span class="badge badge-amber">⏳ Pending</span></td><td><span class="badge badge-red">✗ Unpaid</span></td></tr>
+              <tr><td class="td-roll">SW2025-005</td><td class="td-name">Vikram Joshi</td><td class="td-batch">Corporate D — 7:30 PM</td><td>Business English</td><td>15 Jul 2025</td><td><span class="badge badge-green">✓ Confirmed</span></td><td><span class="badge badge-green">✓ Paid</span></td></tr>
+              <tr><td class="td-roll">SW2025-006</td><td class="td-name">Anjali Singh</td><td class="td-batch">Intermediate B — 10:00 AM</td><td>Intermediate English</td><td>1 Jul 2025</td><td><span class="badge badge-green">✓ Confirmed</span></td><td><span class="badge badge-red">✗ Unpaid</span></td></tr>
+              <tr><td class="td-roll">SW2025-007</td><td class="td-name">Rohit Malhotra</td><td class="td-batch">Advanced C — 5:30 PM</td><td>Advanced Communication</td><td>15 Jul 2025</td><td><span class="badge badge-blue">📋 Waitlist</span></td><td><span class="badge badge-amber">⏳ Partial</span></td></tr>
+              <tr><td class="td-roll">SW2025-008</td><td class="td-name">Meera Iyer</td><td class="td-batch">Foundation A — 7:00 AM</td><td>Foundation English</td><td>1 Jul 2025</td><td><span class="badge badge-green">✓ Confirmed</span></td><td><span class="badge badge-green">✓ Paid</span></td></tr>
+              <tr><td class="td-roll">SW2025-009</td><td class="td-name">Karan Mehta</td><td class="td-batch">Corporate D — 7:30 PM</td><td>Business English</td><td>15 Jul 2025</td><td><span class="badge badge-green">✓ Confirmed</span></td><td><span class="badge badge-green">✓ Paid</span></td></tr>
+              <tr><td class="td-roll">SW2025-010</td><td class="td-name">Divya Mishra</td><td class="td-batch">Intermediate B — 10:00 AM</td><td>Intermediate English</td><td>1 Jul 2025</td><td><span class="badge badge-amber">⏳ Pending</span></td><td><span class="badge badge-amber">⏳ Partial</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:.74rem;color:var(--ink4);margin-top:12px;font-family:'JetBrains Mono',monospace">Showing all students · Last updated: 1 Jul 2025 · For corrections contact office</p>
+      </div>
+    </div>
+
+    <!-- TAB: COURSES -->
+    <div class="tab-content" id="tab-courses">
+      <div class="courses-grid">
+
+        <div class="course-card">
+          <div class="cc-header">
+            <div class="cc-level">Level 1</div>
+            <div class="cc-name">Foundation English</div>
+            <div class="cc-duration">⏱ 3 Months · 5 days/week</div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-price-row">
+              <div class="cc-price"><sup>₹</sup>3,999</div>
+            </div>
+            <div class="cc-price-note">Total course fee</div>
+            <div class="cc-emi">✓ Pay in 2 easy instalments</div>
+            <div class="cc-features">
+              <div class="cc-feat">Basic grammar & tenses</div>
+              <div class="cc-feat">Pronunciation correction</div>
+              <div class="cc-feat">Daily vocabulary (20 words/day)</div>
+              <div class="cc-feat">Simple conversation practice</div>
+              <div class="cc-feat">Free PDF study material</div>
+              <div class="cc-feat dim">Group discussion sessions</div>
+              <div class="cc-feat dim">Interview preparation</div>
+            </div>
+            <a href="#enroll" class="cc-cta outline">Enroll in Foundation</a>
+          </div>
+        </div>
+
+        <div class="course-card featured">
+          <div class="cc-header">
+            <div class="cc-level">Level 2</div>
+            <div class="cc-name">Intermediate English</div>
+            <div class="cc-duration">⏱ 4 Months · 5 days/week</div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-price-row">
+              <div class="cc-price"><sup>₹</sup>5,999</div>
+            </div>
+            <div class="cc-price-note">Total course fee</div>
+            <div class="cc-emi">✓ Pay in 3 easy instalments</div>
+            <div class="cc-features">
+              <div class="cc-feat">All Foundation topics</div>
+              <div class="cc-feat">Fluency building exercises</div>
+              <div class="cc-feat">Group discussion (GD) training</div>
+              <div class="cc-feat">Public speaking basics</div>
+              <div class="cc-feat">Reading & writing workshops</div>
+              <div class="cc-feat">Mock tests every 2 weeks</div>
+              <div class="cc-feat dim">Interview preparation</div>
+            </div>
+            <a href="#enroll" class="cc-cta fill">Enroll in Intermediate</a>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="cc-header">
+            <div class="cc-level">Level 3</div>
+            <div class="cc-name">Advanced Communication</div>
+            <div class="cc-duration">⏱ 3 Months · 5 days/week</div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-price-row">
+              <div class="cc-price"><sup>₹</sup>7,499</div>
+            </div>
+            <div class="cc-price-note">Total course fee</div>
+            <div class="cc-emi">✓ Pay in 3 easy instalments</div>
+            <div class="cc-features">
+              <div class="cc-feat">All Intermediate topics</div>
+              <div class="cc-feat">Debate & extempore practice</div>
+              <div class="cc-feat">Interview & HR round prep</div>
+              <div class="cc-feat">Presentation skills</div>
+              <div class="cc-feat">Accent neutralization</div>
+              <div class="cc-feat">Personality development</div>
+            </div>
+            <a href="#enroll" class="cc-cta outline">Enroll in Advanced</a>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="cc-header">
+            <div class="cc-level">Corporate</div>
+            <div class="cc-name">Business English</div>
+            <div class="cc-duration">⏱ 2 Months · 3 days/week</div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-price-row">
+              <div class="cc-price"><sup>₹</sup>8,999</div>
+            </div>
+            <div class="cc-price-note">Total course fee</div>
+            <div class="cc-emi">✓ Pay in 2 easy instalments</div>
+            <div class="cc-features">
+              <div class="cc-feat">Corporate email writing</div>
+              <div class="cc-feat">Meeting & conference English</div>
+              <div class="cc-feat">Telephonic communication</div>
+              <div class="cc-feat">Negotiation language</div>
+              <div class="cc-feat">Presentation to clients</div>
+            </div>
+            <a href="#enroll" class="cc-cta outline">Enroll in Business</a>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="cc-header">
+            <div class="cc-level">Kids</div>
+            <div class="cc-name">Junior English (6–14 yrs)</div>
+            <div class="cc-duration">⏱ 3 Months · 3 days/week</div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-price-row">
+              <div class="cc-price"><sup>₹</sup>2,999</div>
+            </div>
+            <div class="cc-price-note">Total course fee</div>
+            <div class="cc-emi">✓ Single payment</div>
+            <div class="cc-features">
+              <div class="cc-feat">Fun activity-based learning</div>
+              <div class="cc-feat">Rhymes, stories & role-play</div>
+              <div class="cc-feat">Basic grammar through games</div>
+              <div class="cc-feat">Confidence building</div>
+            </div>
+            <a href="#enroll" class="cc-cta outline">Enroll for Kids</a>
+          </div>
+        </div>
+
+        <div class="course-card" style="background:linear-gradient(135deg,var(--navy),var(--navy2));border-color:rgba(255,255,255,.1);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:36px 24px;gap:14px">
+          <div style="font-size:2.5rem">🎯</div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;font-weight:700">Need a Custom Plan?</div>
+          <p style="color:rgba(255,255,255,.6);font-size:.84rem;line-height:1.6">We offer one-on-one coaching, crash courses and weekend-only batches.</p>
+          <a href="https://wa.me/919876543210" target="_blank" class="btn-wa" style="border-radius:var(--rs)">💬 WhatsApp Us</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB: DOWNLOADS -->
+    <div class="tab-content" id="tab-downloads">
+      <div class="dl-section-title">📗 Grammar & Tenses</div>
+      <div class="downloads-grid">
+        <div class="dl-card">
+          <div class="dl-icon">📄</div>
+          <div class="dl-meta">
+            <div class="dl-name">All 12 Tenses — Complete Guide</div>
+            <div class="dl-info"><span>📁 PDF</span><span>🗂 2.4 MB</span><span>📅 Jun 2025</span></div>
+          </div>
+          <a href="#" class="btn-dl" download>⬇ Download</a>
+        </div>
+        <div class="dl-card">
+          <div class="dl-icon">📄</div>
+          <div class="dl-meta">
+            <div class="dl-name">Parts of Speech Worksheet</div>
+            <div class="dl-info"><span>📁 PDF</span><span>🗂 1.1 MB</span><span>📅 Jun 2025</span></div>
+          </div>
+          <a href="#" class="btn-dl" download>⬇ Download</a>
+        </div>
+        <div class="dl-card">
+          <div class="dl-icon">📄</div>
+          <div class="dl-meta">
+            <div class="dl-name">Active & Passive Voice — 100 Examples</div>
+            <div class="dl-info"><span>📁 PDF</span><span>🗂 0.9 MB</span><span>📅 May 2025</span></div>
+          </div>
+          <a href="#" class="btn-dl" download>⬇ Download</a>
+        </div>
+        <div class="dl-card">
+          <div class="dl-icon">📄</div>
+          <div class="dl-meta">
+            <div class="dl-name">Direct & Indirect Speech Rules</div>
+            <div class="dl-info"><span>📁 PDF</span><span>🗂 1.3 MB</span><span>📅 May 2025</span></div>
+          </div>
+          <a href="#" class="btn-dl" download>⬇ Download</a>
+        </div>
+      </div>
+
+      <div class="dl-section-title">🗣 Speaking & Vocabulary</div>
+      <div class="downloads-grid">
+        <div class="dl-card">
+          <div class="dl-icon">📄</div>
+          <div class="dl-meta">
+            <div class="dl-name">1000 Daily Use English Sentences</div>
+            <div class="dl-info"><span>📁 PDF</span><span>🗂 3.6 MB</span><span>📅 Jul 2025</span></div>
+          </div>
+          <a href="#" class="btn-dl" download>⬇ Download</a>
+        </div>
+        <div class="dl-card">
+          <div class="dl-icon">📄</div>
+          <div class="dl-meta">
+            <div class="dl-name">Weekly Vocabulary Builder — July</div>
+            <div class="dl-info"><span>📁 PDF</span><span>🗂 0.8 MB</span><span>📅 Jul 2025</span></div>
+          </div>
+          <a href="#" class="btn-dl" download>⬇ Download</a>
+        </div>
+        <div class="dl-card">
+          <div class="dl-icon">📄</div>
+          <div class="dl-meta">
+            <div class="dl-name">Common Phrasal Verbs List (200+)</div>
+            <div class="dl-info"><span>📁 PDF</span><span>🗂 1.7 MB</span><span>📅 Jun 2025</span></div>
+          </div>
+          <a href="#" class="btn-dl" download>⬇ Download</a>
+        </div>
+        <div class="dl-card">
+          <div class="dl-icon">📄</div>
+          <div class="dl-meta">
+            <div class="dl-name">Group Discussion Topics & Tips</div>
+            <div class="dl-info"><span>📁 PDF</span><span>🗂 1.2 MB</span><span>📅 Jun 2025</span></div>
+          </div>
+          <a href="#" class="btn-dl" download>⬇ Download</a>
+        </div>
+      </div>
+
+      <div class="dl-section-title">💼 Interview & Career</div>
+      <div class="downloads-grid">
+        <div class="dl-card">
+          <div class="dl-icon">📄</div>
+          <div class="dl-meta">
+            <div class="dl-name">50 HR Interview Questions & Answers</div>
+            <div class="dl-info"><span>📁 PDF</span><span>🗂 2.1 MB</span><span>📅 Jul 2025</span></div>
+          </div>
+          <a href="#" class="btn-dl" download>⬇ Download</a>
+        </div>
+        <div class="dl-card">
+          <div class="dl-icon">📄</div>
+          <div class="dl-meta">
+            <div class="dl-name">Resume Writing Guide in English</div>
+            <div class="dl-info"><span>📁 PDF</span><span>🗂 1.4 MB</span><span>📅 May 2025</span></div>
+          </div>
+          <a href="#" class="btn-dl" download>⬇ Download</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: FEE STATUS -->
+    <div class="tab-content" id="tab-fees">
+      <div class="fee-search">
+        <p style="font-size:.88rem;color:var(--ink3);margin-bottom:16px">Enter your roll number or full name to view your complete fee payment history.</p>
+        <div class="search-row">
+          <div class="search-input-wrap" style="flex:1">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="text" id="fee-search-input" placeholder="Roll number (e.g. SW2025-002) or your full name">
+          </div>
+          <button class="btn-search" onclick="searchFees()">🔍 Check Status</button>
+          <button class="btn-clear" onclick="clearFeeSearch()">Clear</button>
+        </div>
+        <div class="no-result-msg" id="fee-no-result">❌ No records found. Please check your roll number or contact the office.</div>
+      </div>
+
+      <div id="fee-results"></div>
+
+      <div style="background:var(--blue-pale);border:1px solid var(--blue-border);border-radius:var(--r);padding:18px 20px;display:flex;gap:12px;align-items:flex-start">
+        <div style="font-size:1.2rem;flex-shrink:0">ℹ️</div>
+        <div>
+          <p style="font-size:.84rem;font-weight:600;color:var(--blue);margin-bottom:4px">Payment Methods Accepted</p>
+          <p style="font-size:.82rem;color:var(--ink2);line-height:1.6">Cash at centre · UPI (PhonePe / GPay / Paytm) · Bank Transfer · Cheque. For online payment confirmation, share your UTR number with our office on WhatsApp.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- COURSES -->
-<section class="courses" id="courses">
-  <div class="container">
-    <p class="section-label">Our Programs</p>
-    <h2>अपना Course चुनो</h2>
-    <p class="sub">हर level के लिए perfect course — Beginner से Advanced तक</p>
-    <div class="course-grid">
-      <div class="course-card fade-in">
-        <div class="course-top">
-          <div class="icon">🗣️</div>
-          <h3>Spoken English</h3>
-          <p>Beginners के लिए — 3 Month Program</p>
-        </div>
-        <div class="course-body">
-          <ul>
-            <li>Daily speaking practice sessions</li>
-            <li>Grammar basics & vocabulary</li>
-            <li>Real-life conversation practice</li>
-            <li>Weekly mock tests</li>
-            <li>Free study material included</li>
-          </ul>
-          <div class="fee">
-            <strong>₹1,500/month</strong>
-            <span>Batch timing: 7AM / 5PM / 7PM</span>
-          </div>
-          <a href="#register" class="btn btn-gold" style="margin-top:14px;width:100%;text-align:center;display:block">Enroll Now →</a>
-        </div>
-      </div>
-      <div class="course-card fade-in">
-        <div class="course-top" style="background:#1a3a7c">
-          <div class="icon">💼</div>
-          <h3>Business English</h3>
-          <p>Working Professionals के लिए — 2 Month</p>
-        </div>
-        <div class="course-body">
-          <ul>
-            <li>Email & presentation writing</li>
-            <li>Interview preparation</li>
-            <li>Professional vocabulary</li>
-            <li>Group discussions & debates</li>
-            <li>Certificate on completion</li>
-          </ul>
-          <div class="fee">
-            <strong>₹2,000/month</strong>
-            <span>Weekend batches available</span>
-          </div>
-          <a href="#register" class="btn btn-gold" style="margin-top:14px;width:100%;text-align:center;display:block">Enroll Now →</a>
-        </div>
-      </div>
-      <div class="course-card fade-in">
-        <div class="course-top" style="background:#7c1a1a">
-          <div class="icon">🎓</div>
-          <h3>IELTS / PTE Prep</h3>
-          <p>Exam Aspirants के लिए — 4 Month</p>
-        </div>
-        <div class="course-body">
-          <ul>
-            <li>All 4 modules: R/W/L/S</li>
-            <li>Full-length mock tests</li>
-            <li>Score improvement guarantee</li>
-            <li>Visa & abroad guidance</li>
-            <li>Small batch (max 10 students)</li>
-          </ul>
-          <div class="fee">
-            <strong>₹3,500/month</strong>
-            <span>Target band: 7.0+</span>
-          </div>
-          <a href="#register" class="btn btn-gold" style="margin-top:14px;width:100%;text-align:center;display:block">Enroll Now →</a>
-        </div>
-      </div>
+<!-- FEATURES STRIP -->
+<div class="features-strip">
+  <div class="features-inner">
+    <div class="feat">
+      <div class="feat-ico">🎯</div>
+      <h3>Goal-Based Learning</h3>
+      <p>Courses designed for specific outcomes — jobs, confidence, exams or business.</p>
     </div>
-  </div>
-</section>
-
-<!-- PDF DOWNLOADS -->
-<section class="pdf-section" id="downloads">
-  <div class="container">
-    <p class="section-label">Free Resources</p>
-    <h2>📥 Free Download करो</h2>
-    <p class="sub">अपना नाम और नंबर डालो — PDF तुरंत मिलेगी</p>
-    <div class="pdf-grid">
-      <div class="pdf-card fade-in" onclick="openPdfModal('fee')">
-        <div class="pdf-icon">📋</div>
-        <h4>Fee Structure 2024</h4>
-        <p>सभी courses की complete fee, EMI options और scholarship details</p>
-        <button class="pdf-btn">📥 Download करो</button>
-      </div>
-      <div class="pdf-card fade-in" onclick="openPdfModal('syllabus')">
-        <div class="pdf-icon">📚</div>
-        <h4>Course Syllabus</h4>
-        <p>Month-wise syllabus, topics covered और exam pattern की पूरी जानकारी</p>
-        <button class="pdf-btn">📥 Download करो</button>
-      </div>
-      <div class="pdf-card fade-in" onclick="openPdfModal('sample')">
-        <div class="pdf-icon">📝</div>
-        <h4>Free Sample Paper</h4>
-        <p>50 practice questions, vocabulary list और grammar rules — बिल्कुल free</p>
-        <button class="pdf-btn">📥 Download करो</button>
-      </div>
+    <div class="feat">
+      <div class="feat-ico">👩‍🏫</div>
+      <h3>Expert Trainers</h3>
+      <p>All trainers hold master's degrees and have 5+ years of coaching experience.</p>
     </div>
-  </div>
-</section>
-
-<!-- PDF MODAL -->
-<div class="modal-overlay" id="pdfModal">
-  <div class="modal">
-    <button class="close-btn" onclick="closePdfModal()">✕</button>
-    <div id="pdfFormWrap">
-      <h3>📄 PDF Download करें</h3>
-      <p id="pdfDesc">अपना details भरो — PDF तुरंत WhatsApp पर भेजी जाएगी</p>
-      <input type="text" id="pdf-name" placeholder="आपका नाम*">
-      <input type="tel" id="pdf-phone" placeholder="WhatsApp Number*">
-      <input type="text" id="pdf-area" placeholder="आपका Area / City">
-      <button class="submit-btn" onclick="submitPdf()">📥 PDF भेजो मुझे!</button>
+    <div class="feat">
+      <div class="feat-ico">📋</div>
+      <h3>Structured Curriculum</h3>
+      <p>Weekly lesson plans, monthly assessments and progress reports for every student.</p>
     </div>
-    <div class="success-msg" id="pdfSuccess">
-      <div class="check">✅</div>
-      <h4>PDF भेज दी गई!</h4>
-      <p>आपके WhatsApp पर अभी PDF मिलेगी। हमारी team जल्द contact करेगी।</p>
+    <div class="feat">
+      <div class="feat-ico">🏆</div>
+      <h3>Certified Completion</h3>
+      <p>Receive a SpeakWell completion certificate recognized by partner institutions.</p>
     </div>
   </div>
 </div>
-
-<!-- REGISTRATION -->
-<section class="register-section" id="register">
-  <div class="container">
-    <div class="reg-grid">
-      <div>
-        <p class="section-label">Online Registration</p>
-        <h2>आज ही Register करो</h2>
-        <p class="sub" style="color:#a8bcd8">Free demo class book करो — कोई advance payment नहीं चाहिए</p>
-        <ul class="reg-benefits">
-          <li><span class="ico">🎁</span><span><strong style="color:#fff">पहली class बिल्कुल FREE</strong><br>No payment, no commitment — बस आओ और सीखो</span></li>
-          <li><span class="ico">⚡</span><span><strong style="color:#fff">तुरंत Confirmation</strong><br>Form भरते ही WhatsApp पर slot confirm होगा</span></li>
-          <li><span class="ico">📞</span><span><strong style="color:#fff">24 घंटे में Call</strong><br>हमारी team आपको personally call करेगी</span></li>
-          <li><span class="ico">🏅</span><span><strong style="color:#fff">Scholarship Available</strong><br>Meritorious students को 20% fee waiver</span></li>
-        </ul>
-      </div>
-      <div class="reg-form">
-        <div id="regFormWrap">
-          <div class="form-row">
-            <div class="form-group">
-              <label>पूरा नाम *</label>
-              <input type="text" id="reg-name" placeholder="Your name">
-            </div>
-            <div class="form-group">
-              <label>Mobile / WhatsApp *</label>
-              <input type="tel" id="reg-phone" placeholder="10-digit number">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Email</label>
-              <input type="email" id="reg-email" placeholder="email@gmail.com">
-            </div>
-            <div class="form-group">
-              <label>Area / City *</label>
-              <input type="text" id="reg-area" placeholder="Khargone / area">
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Course Interest *</label>
-            <select id="reg-course">
-              <option value="">-- Course चुनो --</option>
-              <option>Spoken English (Beginner)</option>
-              <option>Business English</option>
-              <option>IELTS / PTE Preparation</option>
-              <option>Kids English (Age 6-12)</option>
-              <option>Abhi decide nahi kiya</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Preferred Batch Time</label>
-            <select id="reg-batch">
-              <option value="">-- Time chuno --</option>
-              <option>Morning 7:00 AM</option>
-              <option>Evening 5:00 PM</option>
-              <option>Evening 7:00 PM</option>
-              <option>Weekend (Sat-Sun)</option>
-            </select>
-          </div>
-          <button class="reg-submit" onclick="submitReg()">🎓 Free Demo Class Book करो →</button>
-        </div>
-        <div class="success-msg" id="regSuccess">
-          <div class="check">🎉</div>
-          <h4 style="color:var(--navy)">Registration हो गई!</h4>
-          <p style="color:var(--gray)">बधाई हो! हमारी team 24 घंटे में call करेगी। WhatsApp पर confirmation आ गई होगी।</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- TESTIMONIALS -->
-<section style="padding:80px 5%;background:#fff">
-  <div class="container">
-    <p class="section-label">Student Reviews</p>
-    <h2>Students क्या कहते हैं?</h2>
-    <p class="sub">Real students, real results</p>
-    <div class="testi-grid">
-      <div class="testi-card fade-in">
-        <div class="stars">★★★★★</div>
-        <p>"SpeakUp join करने के 3 months बाद मेरा job interview में confidence बढ़ गया। Teacher बहुत patient हैं और practical सिखाते हैं।"</p>
-        <div class="testi-author">
-          <div class="avatar">R</div>
-          <div><strong>Rahul Patel</strong><span>Spoken English — Batch 2023</span></div>
-        </div>
-      </div>
-      <div class="testi-card fade-in">
-        <div class="stars">★★★★★</div>
-        <p>"IELTS में 7.5 band मिला! पहले 5.5 था। यहाँ की teaching strategy और mock tests ने पूरी तरह बदल दिया मुझे।"</p>
-        <div class="testi-author">
-          <div class="avatar">P</div>
-          <div><strong>Priya Sharma</strong><span>IELTS Prep — Canada Visa ✅</span></div>
-        </div>
-      </div>
-      <div class="testi-card fade-in">
-        <div class="stars">★★★★★</div>
-        <p>"Online registration बहुत easy था। Form भरा, 2 घंटे में call आई, और अगले दिन class शुरू। बहुत professional।"</p>
-        <div class="testi-author">
-          <div class="avatar">A</div>
-          <div><strong>Anjali Verma</strong><span>Business English — MNC Employee</span></div>
-        </div>
-      </div>
+<section class="sec" id="about">
+  <div class="sec-head">
+    <div class="sec-label">Student Stories</div>
+    <div class="sec-title">What our students say</div>
+  </div>
+  <div class="testi-grid">
+    <div class="testi">
+      <div class="testi-stars">★★★★★</div>
+      <p>"I joined the Intermediate batch 4 months ago. I couldn't speak 2 sentences confidently. Now I give presentations at work. This place changed my life."</p>
+      <div class="testi-author"><div class="ta-avatar">AK</div><div><div class="ta-name">Ankit Kumar</div><div class="ta-batch">Intermediate Batch · Jul 2024</div></div></div>
+    </div>
+    <div class="testi">
+      <div class="testi-stars">★★★★★</div>
+      <p>"The Business English course helped me crack my first client meeting in English. The trainer's real-world examples made everything so practical."</p>
+      <div class="testi-author"><div class="ta-avatar">SP</div><div><div class="ta-name">Sneha Pathak</div><div class="ta-batch">Business English · Jan 2025</div></div></div>
+    </div>
+    <div class="testi">
+      <div class="testi-stars">★★★★★</div>
+      <p>"My daughter's confidence in English has improved dramatically in just 2 months of the Junior batch. Teachers are so patient and encouraging."</p>
+      <div class="testi-author"><div class="ta-avatar">RM</div><div><div class="ta-name">Ritu Mehta</div><div class="ta-batch">Parent · Kids Batch · Mar 2025</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <div class="container">
-    <div class="contact-grid">
-      <div>
-        <p class="section-label">Get In Touch</p>
-        <h2>हमसे मिलो या Call करो</h2>
-        <p class="sub">कोई भी सवाल है? हम हमेशा available हैं</p>
-        <div class="contact-item">
-          <div class="c-icon">📍</div>
-          <div>
-            <div class="c-label">Address</div>
-            <div class="c-val">Near Main Chowk, Khargone, MP — 451001</div>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="c-icon">📞</div>
-          <div>
-            <div class="c-label">Call / WhatsApp</div>
-            <div class="c-val"><a href="tel:+919876543210" style="color:var(--navy);text-decoration:none">+91 98765 43210</a></div>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="c-icon">⏰</div>
-          <div>
-            <div class="c-label">Timing</div>
-            <div class="c-val">Mon–Sat: 7AM – 9PM</div>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="c-icon">📧</div>
-          <div>
-            <div class="c-label">Email</div>
-            <div class="c-val">info@speakupenglish.in</div>
-          </div>
-        </div>
-      </div>
-      <div style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.1);height:320px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px">
-        <div style="font-size:3rem">🗺️</div>
-        <p style="color:var(--gray);font-size:.95rem;text-align:center;padding:0 20px">Google Map यहाँ embed होगा<br><small>iframe से real location add करें</small></p>
-        <a href="https://maps.google.com" target="_blank" class="btn btn-gold" style="font-size:.9rem;padding:10px 20px">Google Maps पर देखो →</a>
-      </div>
-    </div>
+<!-- ENROLL CTA -->
+<div class="enroll-cta" id="enroll">
+  <h2>Ready to speak English with confidence?</h2>
+  <p>New batch starting 1st August 2025. Limited seats available. Enrol today.</p>
+  <div class="enroll-actions">
+    <a href="tel:+919876543210" class="btn-enroll">📞 Call to Enrol</a>
+    <a href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20enquire%20about%20admission%20at%20SpeakWell%20Academy" target="_blank" class="btn-wa">💬 WhatsApp Enquiry</a>
   </div>
-</section>
-
-<!-- CTA BANNER -->
-<div class="cta-banner">
-  <h2>🚀 इंतज़ार क्यों? आज ही शुरू करो!</h2>
-  <p>पहली class FREE है — कोई risk नहीं, सिर्फ opportunity है</p>
-  <a href="#register" class="btn-navy">🎓 अभी Free Demo Book करो</a>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <span class="logo">SpeakUp <span style="color:var(--gold)">English</span> Academy</span>
-  <p>Near Main Chowk, Khargone, MP | +91 98765 43210 | info@speakupenglish.in</p>
-  <p style="margin-top:8px;font-size:.8rem;opacity:.6">© 2024 Aawaz academy Academy. All Rights Reserved.</p>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div style="font-family:'Playfair Display',serif;font-size:1.15rem;color:#fff;font-weight:700">SpeakWell <span style="color:#60a5fa">Academy</span></div>
+      <p>Premier Spoken English Coaching Centre in Indore, serving students since 2017 with structured, goal-based language training.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="#">Foundation English</a></li>
+        <li><a href="#">Intermediate English</a></li>
+        <li><a href="#">Advanced Communication</a></li>
+        <li><a href="#">Business English</a></li>
+        <li><a href="#">Junior English (Kids)</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Student Portal</h4>
+      <ul>
+        <li><a href="#dashboard" onclick="switchTab('admission')">Check Admission</a></li>
+        <li><a href="#dashboard" onclick="switchTab('courses')">View Courses</a></li>
+        <li><a href="#dashboard" onclick="switchTab('downloads')">Download PDFs</a></li>
+        <li><a href="#dashboard" onclick="switchTab('fees')">Fee Status</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item">📍 456, Palasia Square, Indore, MP 452001</div>
+      <div class="footer-contact-item">📞 +91 98765 43210</div>
+      <div class="footer-contact-item">✉ info@speakwellacademy.in</div>
+      <div class="footer-contact-item">🕘 Mon–Sat: 7AM – 8PM</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 SpeakWell Academy, Indore. All rights reserved.</span>
+    <span>This is a demo website · Content is illustrative only</span>
+  </div>
 </footer>
 
-<!-- FLOATING CALL BUTTON -->
-<a href="tel:+919876543210" class="float-call" title="Call Now">📞</a>
-
 <script>
-// PDF Modal
-let currentPdf = '';
-const pdfTitles = {
-  fee: 'Fee Structure PDF',
-  syllabus: 'Course Syllabus PDF',
-  sample: 'Free Sample Paper PDF'
+/* ============================================================
+   TYPING ANIMATION
+   ============================================================ */
+const phrases = [
+  '"Present Perfect Tense"',
+  '"I have already done it."',
+  '"Confidence is the key."',
+  '"Speak, don\'t fear."',
+  '"Past Continuous Tense"',
+  '"She was reading a book."',
+  '"Communication wins."'
+];
+let pi = 0, ci = 0, del = false;
+const el = document.getElementById('type-text');
+
+function type() {
+  const cur = phrases[pi];
+  if (!del) {
+    el.textContent = cur.slice(0, ++ci);
+    if (ci === cur.length) { del = true; setTimeout(type, 1800); return; }
+  } else {
+    el.textContent = cur.slice(0, --ci);
+    if (ci === 0) { del = false; pi = (pi+1) % phrases.length; }
+  }
+  setTimeout(type, del ? 40 : 70);
+}
+type();
+
+/* ============================================================
+   TAB SWITCHING
+   ============================================================ */
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  if (btn) btn.classList.add('active');
+  else {
+    const btns = document.querySelectorAll('.tab-btn');
+    const map = {admission:0,courses:1,downloads:2,fees:3};
+    if (map[id] !== undefined) btns[map[id]].classList.add('active');
+  }
+  document.getElementById('dashboard').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* ============================================================
+   STUDENT ADMISSION SEARCH
+   ============================================================ */
+const students = [
+  {roll:'SW2025-001',name:'Aarav Sharma',batch:'Foundation A — 7:00 AM',course:'Foundation English',start:'1 Jul 2025',admit:'Confirmed',fee:'Paid'},
+  {roll:'SW2025-002',name:'Priya Patel',batch:'Intermediate B — 10:00 AM',course:'Intermediate English',start:'1 Jul 2025',admit:'Confirmed',fee:'Partial'},
+  {roll:'SW2025-003',name:'Rahul Verma',batch:'Advanced C — 5:30 PM',course:'Advanced Communication',start:'1 Jul 2025',admit:'Confirmed',fee:'Paid'},
+  {roll:'SW2025-004',name:'Sneha Gupta',batch:'Foundation A — 7:00 AM',course:'Foundation English',start:'1 Jul 2025',admit:'Pending',fee:'Unpaid'},
+  {roll:'SW2025-005',name:'Vikram Joshi',batch:'Corporate D — 7:30 PM',course:'Business English',start:'15 Jul 2025',admit:'Confirmed',fee:'Paid'},
+  {roll:'SW2025-006',name:'Anjali Singh',batch:'Intermediate B — 10:00 AM',course:'Intermediate English',start:'1 Jul 2025',admit:'Confirmed',fee:'Unpaid'},
+  {roll:'SW2025-007',name:'Rohit Malhotra',batch:'Advanced C — 5:30 PM',course:'Advanced Communication',start:'15 Jul 2025',admit:'Waitlist',fee:'Partial'},
+  {roll:'SW2025-008',name:'Meera Iyer',batch:'Foundation A — 7:00 AM',course:'Foundation English',start:'1 Jul 2025',admit:'Confirmed',fee:'Paid'},
+  {roll:'SW2025-009',name:'Karan Mehta',batch:'Corporate D — 7:30 PM',course:'Business English',start:'15 Jul 2025',admit:'Confirmed',fee:'Paid'},
+  {roll:'SW2025-010',name:'Divya Mishra',batch:'Intermediate B — 10:00 AM',course:'Intermediate English',start:'1 Jul 2025',admit:'Pending',fee:'Partial'},
+];
+
+function badgeAdmit(v){
+  if(v==='Confirmed') return '<span class="badge badge-green">✓ Confirmed</span>';
+  if(v==='Pending')   return '<span class="badge badge-amber">⏳ Pending</span>';
+  if(v==='Waitlist')  return '<span class="badge badge-blue">📋 Waitlist</span>';
+  return '<span class="badge">'+v+'</span>';
+}
+function badgeFee(v){
+  if(v==='Paid')    return '<span class="badge badge-green">✓ Paid</span>';
+  if(v==='Partial') return '<span class="badge badge-amber">⏳ Partial</span>';
+  if(v==='Unpaid')  return '<span class="badge badge-red">✗ Unpaid</span>';
+  return '<span class="badge">'+v+'</span>';
+}
+
+function renderRows(list) {
+  return list.map(s =>
+    `<tr><td class="td-roll">${s.roll}</td><td class="td-name">${s.name}</td>
+     <td class="td-batch">${s.batch}</td><td>${s.course}</td><td>${s.start}</td>
+     <td>${badgeAdmit(s.admit)}</td><td>${badgeFee(s.fee)}</td></tr>`
+  ).join('');
+}
+
+function searchStudents() {
+  const q    = document.getElementById('student-search').value.trim().toLowerCase();
+  const bat  = document.getElementById('batch-filter').value;
+  const msg  = document.getElementById('no-result-msg');
+  const tbody = document.getElementById('student-tbody');
+
+  let res = students.filter(s => {
+    const matchQ   = !q || s.name.toLowerCase().includes(q) || s.roll.toLowerCase().includes(q);
+    const matchBat = bat==='all' || s.batch.toLowerCase().includes(bat);
+    return matchQ && matchBat;
+  });
+
+  if (res.length === 0) {
+    tbody.innerHTML = '';
+    msg.classList.add('show');
+  } else {
+    msg.classList.remove('show');
+    tbody.innerHTML = renderRows(res);
+  }
+}
+
+function clearSearch() {
+  document.getElementById('student-search').value = '';
+  document.getElementById('batch-filter').value = 'all';
+  document.getElementById('no-result-msg').classList.remove('show');
+  document.getElementById('student-tbody').innerHTML = renderRows(students);
+}
+
+document.getElementById('student-search').addEventListener('keydown', e => {
+  if (e.key === 'Enter') searchStudents();
+});
+
+/* ============================================================
+   FEE STATUS SEARCH
+   ============================================================ */
+const feeData = {
+  'SW2025-001': {name:'Aarav Sharma',course:'Foundation English',total:3999,paid:3999,due:0,installments:[{no:1,amt:2000,date:'1 Jul 2025',status:'Paid'},{no:2,amt:1999,date:'1 Aug 2025',status:'Paid'}]},
+  'SW2025-002': {name:'Priya Patel',course:'Intermediate English',total:5999,paid:3000,due:2999,installments:[{no:1,amt:3000,date:'1 Jul 2025',status:'Paid'},{no:2,amt:1500,date:'1 Aug 2025',status:'Pending'},{no:3,amt:1499,date:'1 Sep 2025',status:'Pending'}]},
+  'SW2025-004': {name:'Sneha Gupta',course:'Foundation English',total:3999,paid:0,due:3999,installments:[{no:1,amt:2000,date:'1 Jul 2025',status:'Unpaid'},{no:2,amt:1999,date:'1 Aug 2025',status:'Unpaid'}]},
 };
 
-function openPdfModal(type) {
-  currentPdf = type;
-  document.getElementById('pdfDesc').textContent = pdfTitles[type] + ' — अपना details भरो';
-  document.getElementById('pdfModal').classList.add('active');
-  document.getElementById('pdfFormWrap').style.display = 'block';
-  document.getElementById('pdfSuccess').style.display = 'none';
+function searchFees() {
+  const q   = document.getElementById('fee-search-input').value.trim();
+  const msg = document.getElementById('fee-no-result');
+  const res = document.getElementById('fee-results');
+
+  if (!q) return;
+
+  // Match by roll or name
+  let key = Object.keys(feeData).find(k =>
+    k.toLowerCase() === q.toLowerCase() ||
+    feeData[k].name.toLowerCase().includes(q.toLowerCase())
+  );
+
+  if (!key) {
+    // Fallback: create a demo result for any search
+    const s = students.find(st =>
+      st.roll.toLowerCase() === q.toLowerCase() ||
+      st.name.toLowerCase().includes(q.toLowerCase())
+    );
+    if (s) {
+      // Generic not-found-in-detail record
+      res.innerHTML = `<div class="fee-card">
+        <div class="fee-card-header">
+          <div class="fch-left"><strong>${s.name}</strong><span>${s.roll} · ${s.course}</span></div>
+          ${badgeFee(s.fee)}
+        </div>
+        <div style="padding:24px;text-align:center;color:var(--ink3);font-size:.88rem">
+          Detailed payment breakdown not available for this student in the demo.<br>
+          Please contact the office for full fee details.
+        </div>
+      </div>`;
+      msg.classList.remove('show');
+      return;
+    }
+    msg.classList.add('show');
+    res.innerHTML = '';
+    return;
+  }
+
+  msg.classList.remove('show');
+  const d = feeData[key];
+  const pct = Math.round((d.paid/d.total)*100);
+  const overallBadge = d.due===0 ? badgeFee('Paid') : d.paid===0 ? badgeFee('Unpaid') : badgeFee('Partial');
+
+  const rows = d.installments.map(i => {
+    const st = i.status==='Paid'?'badge-green':i.status==='Pending'?'badge-amber':'badge-red';
+    return `<tr><td>Instalment ${i.no}</td><td>₹${i.amt.toLocaleString()}</td><td>${i.date}</td><td><span class="badge ${st}">${i.status==='Paid'?'✓':i.status==='Pending'?'⏳':'✗'} ${i.status}</span></td></tr>`;
+  }).join('');
+
+  res.innerHTML = `
+  <div class="fee-card">
+    <div class="fee-card-header">
+      <div class="fch-left"><strong>${d.name}</strong><span>${key} · ${d.course}</span></div>
+      ${overallBadge}
+    </div>
+    <div style="padding:16px 22px 0;background:var(--gray)">
+      <div style="display:flex;gap:24px;flex-wrap:wrap;padding-bottom:14px">
+        <div><div style="font-size:.72rem;color:var(--ink3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px">Total Fee</div><div style="font-size:1.15rem;font-weight:700;color:var(--navy)">₹${d.total.toLocaleString()}</div></div>
+        <div><div style="font-size:.72rem;color:var(--ink3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px">Amount Paid</div><div style="font-size:1.15rem;font-weight:700;color:var(--green)">₹${d.paid.toLocaleString()}</div></div>
+        <div><div style="font-size:.72rem;color:var(--ink3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px">Balance Due</div><div style="font-size:1.15rem;font-weight:700;color:${d.due>0?'var(--red)':'var(--green)'}">₹${d.due.toLocaleString()}</div></div>
+        <div style="flex:1;min-width:140px"><div style="font-size:.72rem;color:var(--ink3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px">Payment Progress</div><div style="background:var(--line);border-radius:10px;height:8px;overflow:hidden"><div style="width:${pct}%;height:100%;background:${pct===100?'var(--green)':'var(--blue)'};border-radius:10px"></div></div><div style="font-size:.72rem;color:var(--ink3);margin-top:4px">${pct}% paid</div></div>
+      </div>
+    </div>
+    <table class="fee-table">
+      <tr><th>Description</th><th>Amount</th><th>Due Date</th><th>Status</th></tr>
+      ${rows}
+      <tr class="fee-total-row"><td><strong>Total</strong></td><td><strong>₹${d.total.toLocaleString()}</strong></td><td>—</td><td>${overallBadge}</td></tr>
+    </table>
+    ${d.due > 0 ? `<div class="fee-note">⚠️ You have an outstanding balance of <strong>₹${d.due.toLocaleString()}</strong>. Please clear dues before the next installment date to avoid a late fee. Contact us on WhatsApp: +91 98765 43210</div>` : `<div class="fee-note" style="background:var(--green-pale);border-top-color:var(--green-border);color:#065f46">✅ All fees have been paid in full. Thank you!</div>`}
+  </div>`;
 }
 
-function closePdfModal() {
-  document.getElementById('pdfModal').classList.remove('active');
-  ['pdf-name','pdf-phone','pdf-area'].forEach(id => document.getElementById(id).value = '');
+function clearFeeSearch() {
+  document.getElementById('fee-search-input').value = '';
+  document.getElementById('fee-no-result').classList.remove('show');
+  document.getElementById('fee-results').innerHTML = '';
 }
 
-function submitPdf() {
-  const name = document.getElementById('pdf-name').value.trim();
-  const phone = document.getElementById('pdf-phone').value.trim();
-  if (!name || !phone) { alert('कृपया नाम और नंबर भरें'); return; }
-  if (phone.length < 10) { alert('Valid phone number enter करें'); return; }
-  // Store lead
-  const leads = JSON.parse(localStorage.getItem('pdf_leads') || '[]');
-  leads.push({ name, phone, area: document.getElementById('pdf-area').value, pdf: currentPdf, time: new Date().toLocaleString('hi-IN') });
-  localStorage.setItem('pdf_leads', JSON.stringify(leads));
-  document.getElementById('pdfFormWrap').style.display = 'none';
-  document.getElementById('pdfSuccess').style.display = 'block';
-  // Simulate WhatsApp redirect after 2s
-  setTimeout(() => {
-    const msg = encodeURIComponent(`नमस्ते! मैं ${name} हूँ। मुझे ${pdfTitles[currentPdf]} चाहिए।`);
-    window.open(`https://wa.me/919876543210?text=${msg}`, '_blank');
-  }, 1800);
-}
-
-// Registration
-function submitReg() {
-  const name = document.getElementById('reg-name').value.trim();
-  const phone = document.getElementById('reg-phone').value.trim();
-  const area = document.getElementById('reg-area').value.trim();
-  const course = document.getElementById('reg-course').value;
-  if (!name || !phone || !area || !course) { alert('कृपया सभी required fields भरें (*)'); return; }
-  if (phone.length < 10) { alert('Valid 10-digit number enter करें'); return; }
-  // Store registration
-  const regs = JSON.parse(localStorage.getItem('registrations') || '[]');
-  regs.push({
-    name, phone, area, course,
-    email: document.getElementById('reg-email').value,
-    batch: document.getElementById('reg-batch').value,
-    time: new Date().toLocaleString('hi-IN')
-  });
-  localStorage.setItem('registrations', JSON.stringify(regs));
-  document.getElementById('regFormWrap').style.display = 'none';
-  document.getElementById('regSuccess').style.display = 'block';
-  // WhatsApp confirmation
-  setTimeout(() => {
-    const msg = encodeURIComponent(`नमस्ते Aawaz academy! मेरा नाम ${name} है। मैंने ${course} के लिए register किया है। मेरा number: ${phone}, Area: ${area}`);
-    window.open(`https://wa.me/919876543210?text=${msg}`, '_blank');
-  }, 1500);
-}
-
-// Scroll animations
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-// Close modal on overlay click
-document.getElementById('pdfModal').addEventListener('click', function(e) {
-  if(e.target === this) closePdfModal();
+document.getElementById('fee-search-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') searchFees();
 });
 </script>
 </body>
